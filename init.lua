@@ -316,6 +316,7 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
+  omnisharp = {},
   html = { filetypes = { 'html', 'xhtml', 'xml'} },
 
   lua_ls = {
