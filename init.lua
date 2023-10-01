@@ -22,11 +22,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- NOTE: Here is where you install your plugins.
---  You can configure plugins using the `config` key.
---
---  You can also configure plugins after the setup call,
---    as they will be available in your neovim runtime.
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
@@ -115,55 +110,34 @@ require('lazy').setup({
 }, {})
 
 
-
-
-
-
-
 -- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
-
-
 vim.cmd.colorscheme "catppuccin-mocha"
-
 -- Set highlight on search
 vim.o.hlsearch = false
-
 -- Make line numbers default
 vim.wo.number = true
-
 -- Enable mouse mode
 vim.o.mouse = 'a'
-
 -- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
-
 -- Enable break indent
 vim.o.breakindent = true
-
 -- Save undo history
 vim.o.undofile = true
-
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
-
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
-
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
-
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
 
 
 -- [[ Configure Telescope ]]
@@ -184,7 +158,6 @@ pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
 local builtin = require('telescope.builtin')
-
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
@@ -201,17 +174,6 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 
--- nvim tree keymaps
-vim.keymap.set('n', '<C-n>', "<cmd> NvimTreeToggle <CR>", { desc = 'Toggle nvimtree' })
-vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeFocus <CR>", { desc = 'Focus nvimtree' })
-
--- bufferline tabbing
-
-vim.keymap.set('n', '<tab>', "<cmd> BufferLineCycleNext <CR>", { desc = 'Go to next bufferline in order' })
-vim.keymap.set('n', '<S-tab>', "<cmd> BufferLineCyclePrev <CR>", { desc = 'Go to previous bufferline in order' })
-
-
-
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -219,11 +181,10 @@ vim.keymap.set('n', '<S-tab>', "<cmd> BufferLineCyclePrev <CR>", { desc = 'Go to
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- [[ Configure Treesitter ]]
--- See `:help nvim-treesitter`
+-- Configure nvim-treesitter
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
@@ -299,11 +260,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
+  -- we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
     if desc then
@@ -353,20 +310,13 @@ require('which-key').register({
 })
 
 -- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'html', 'xhtml', 'xml'} },
 
   lua_ls = {
     Lua = {
@@ -375,10 +325,6 @@ local servers = {
     },
   },
 }
-
--- Setup neovim lua configuration
---require('neodev').setup()
-
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
@@ -397,14 +343,12 @@ mason_lspconfig.setup_handlers {
   end
 }
 
--- empty setup using defaults
-require("nvim-tree").setup()
 
--- OR setup with some options
+-- Setup nvim-tree
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
-    width = 30,
+    width = 40,
   },
   renderer = {
     group_empty = true,
@@ -414,4 +358,21 @@ require("nvim-tree").setup({
   },
 })
 
+vim.keymap.set('n', '<C-n>', "<cmd> NvimTreeToggle <CR>", { desc = 'Toggle nvimtree' })
+vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeFocus <CR>", { desc = 'Focus nvimtree' })
+
+
+-- Setup bufferline
 require("bufferline").setup{}
+
+vim.keymap.set('n', '<tab>', "<cmd> BufferLineCycleNext <CR>", { desc = 'Go to next bufferline in order' })
+vim.keymap.set('n', '<S-tab>', "<cmd> BufferLineCyclePrev <CR>", { desc = 'Go to previous bufferline in order' })
+
+
+-- Swap between windows easier
+vim.keymap.set('n', '<C-h>', "<C-w>h", { desc = 'Window left' })
+vim.keymap.set('n', '<C-l>', "<C-w>l", { desc = 'Window right' })
+vim.keymap.set('n', '<C-j>', "<C-w>j", { desc = 'Window down' })
+vim.keymap.set('n', '<C-k>', "<C-w>k", { desc = 'Window up' })
+
+vim.keymap.set('n', '<C-\\>', "<C-w>v", { desc = 'Split view vertically' })
