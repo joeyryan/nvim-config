@@ -43,15 +43,38 @@ require('lazy').setup({
       -- { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
-      -- 'folke/neodev.nvim',
+      'folke/neodev.nvim',
+    },
+  },
+
+  {
+    -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      -- Snippet Engine & its associated nvim-cmp source
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+
+      -- Adds LSP completion capabilities
+      'hrsh7th/cmp-nvim-lsp',
+
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+
+      -- -- Adds a number of user-friendly snippets
+      -- 'rafamadriz/friendly-snippets',
+
+      -- -- idk if these are needed
+      -- "hrsh7th/cmp-nvim-lua",
+      -- "hrsh7th/cmp-buffer",
+      -- "hrsh7th/cmp-path",
     },
   },
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
-  
+
   -- My kitty theme
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
 
   {
     -- Highlight, edit, and navigate code
@@ -92,7 +115,12 @@ require('lazy').setup({
     }
   },
 
-  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
+  { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+
+  {
+    'stevearc/conform.nvim',
+    opts = {},
+  }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -108,6 +136,40 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }, {})
+
+require("catppuccin").setup({
+  transparent_background = false,
+  -- term_colors = false,
+  compile = {
+    enabled = false,
+    path = vim.fn.stdpath("cache") .. "/catppuccin",
+  },
+  dim_inactive = {
+    enabled = false,
+    shade = "dark",
+    percentage = 0.15,
+  },
+  styles = {
+    comments = { "italic" },
+    conditionals = { "italic" },
+    loops = {},
+    functions = {},
+    keywords = { "italic" },
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
+  },
+  integrations = {
+    nvimtree = true,
+    -- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
+  },
+  color_overrides = {},
+  highlight_overrides = {},
+});
 
 
 -- [[ Setting options ]]
@@ -317,7 +379,7 @@ local servers = {
   -- rust_analyzer = {},
   tsserver = {},
   omnisharp = {},
-  html = { filetypes = { 'html', 'xhtml', 'xml'} },
+  html = { filetypes = { 'html', 'xhtml', 'xml' } },
 
   lua_ls = {
     Lua = {
@@ -326,6 +388,16 @@ local servers = {
     },
   },
 }
+
+
+-- Setup neovim lua configuration
+require('neodev').setup()
+
+-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
@@ -342,6 +414,60 @@ mason_lspconfig.setup_handlers {
       filetypes = (servers[server_name] or {}).filetypes,
     }
   end
+}
+
+
+-- [[ Configure nvim-cmp ]]
+-- See `:help cmp`
+local cmp = require 'cmp'
+local luasnip = require 'luasnip'
+require('luasnip.loaders.from_vscode').lazy_load()
+luasnip.config.setup {}
+
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert {
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete {},
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_locally_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.locally_jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  },
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = 'nvim_lsp_signature_help' }
+
+    -- { name = "buffer" },
+    -- { name = "nvim_lua" },
+    -- { name = "path" },
+  },
 }
 
 
@@ -364,7 +490,11 @@ vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeFocus <CR>", { desc = 'Focus nvi
 
 
 -- Setup bufferline
-require("bufferline").setup{}
+require("bufferline").setup {
+  options = {
+    tab_size = 20,
+  }
+}
 
 vim.keymap.set('n', '<tab>', "<cmd> BufferLineCycleNext <CR>", { desc = 'Go to next bufferline in order' })
 vim.keymap.set('n', '<S-tab>', "<cmd> BufferLineCyclePrev <CR>", { desc = 'Go to previous bufferline in order' })
@@ -377,3 +507,21 @@ vim.keymap.set('n', '<C-j>', "<C-w>j", { desc = 'Window down' })
 vim.keymap.set('n', '<C-k>', "<C-w>k", { desc = 'Window up' })
 
 vim.keymap.set('n', '<C-\\>', "<C-w>v", { desc = 'Split view vertically' })
+
+require("conform").setup({
+  formatters_by_ft = {
+    --lua = { "stylua" },
+    -- Conform will run multiple formatters sequentially
+    --python = { "isort", "black" },
+    -- Use a sub-list to run only the first available formatter
+    html = { { "prettierd", "prettier" } },
+    javascript = { { "prettierd", "prettier" } },
+    typescript = { { "prettierd", "prettier" } },
+    ["*"] = { { "prettierd", "prettier" } },
+  },
+  format_on_save = {
+    -- These options will be passed to conform.format()
+    timeout_ms = 500,
+    lsp_fallback = true,
+  },
+})
