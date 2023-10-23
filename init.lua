@@ -6,9 +6,8 @@ vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+
 -- Install package manager
---    https://github.com/folke/lazy.nvim
---    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -23,6 +22,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    -- My kitty theme
+    { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
+
   -- NOTE: First, some plugins that don't require any configuration
 
   -- Detect tabstop and shiftwidth automatically
@@ -40,16 +42,18 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      -- { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
-    },
+    }
   },
 
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
+    lazy = true,
+    event = "InsertEnter",
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
@@ -61,20 +65,20 @@ require('lazy').setup({
       'hrsh7th/cmp-nvim-lsp-signature-help',
 
       -- -- Adds a number of user-friendly snippets
-      -- 'rafamadriz/friendly-snippets',
+      'rafamadriz/friendly-snippets',
 
-      -- -- idk if these are needed
-      -- "hrsh7th/cmp-nvim-lua",
-      -- "hrsh7th/cmp-buffer",
-      -- "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      {
+        'windwp/nvim-autopairs',
+        opts = {} -- this is equalent to setup({}) function
+    }
     },
   },
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
-
-  -- My kitty theme
-  { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
 
   {
     -- Highlight, edit, and navigate code
@@ -85,9 +89,17 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    -- Set lualine as statusline
+    'nvim-lualine/lualine.nvim',
+    -- See `:help lualine.txt`
+    opts = {},
+  },
+
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
+    lazy = true,
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -109,7 +121,6 @@ require('lazy').setup({
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    lazy = false,
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     }
@@ -119,8 +130,98 @@ require('lazy').setup({
 
   {
     'stevearc/conform.nvim',
+    lazy = true,
     opts = {},
+  },
+
+  {
+  "folke/todo-comments.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
   }
+},
+
+{
+  "nvim-pack/nvim-spectre",
+  cmd = "Spectre",
+  opts = { open_cmd = "noswapfile vnew" },
+  -- stylua: ignore
+  keys = {
+    { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+  },
+},
+
+{
+  "lewis6991/gitsigns.nvim",
+  opts = {
+    signs = {
+      add = { text = "▎" },
+      change = { text = "▎" },
+      delete = { text = "" },
+      topdelete = { text = "" },
+      changedelete = { text = "▎" },
+      untracked = { text = "▎" },
+    },
+    on_attach = function(buffer)
+      local gs = package.loaded.gitsigns
+
+      local function map(mode, l, r, desc)
+        vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+      end
+
+      -- stylua: ignore start
+      map("n", "]h", gs.next_hunk, "Next Hunk")
+      map("n", "[h", gs.prev_hunk, "Prev Hunk")
+      map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+      map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+      map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+      map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+      map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+      map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+      map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+      map("n", "<leader>ghd", gs.diffthis, "Diff This")
+      map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+      map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+    end,
+  },
+},
+
+{
+  "lukas-reineke/indent-blankline.nvim",
+  opts = {
+    indent = {
+      char = "│",
+      tab_char = "│",
+    },
+    scope = { enabled = false },
+    exclude = {
+      filetypes = {
+        "help",
+        "alpha",
+        "dashboard",
+        "neo-tree",
+        "Trouble",
+        "lazy",
+        "mason",
+        "notify",
+        "toggleterm",
+        "lazyterm",
+      },
+    },
+  },
+  main = "ibl",
+},
+
+{
+  'numToStr/Comment.nvim',
+  opts = {
+      -- add any options here
+  },
+  lazy = true,
+}
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -138,6 +239,7 @@ require('lazy').setup({
 }, {})
 
 require("catppuccin").setup({
+  lazy = false,
   transparent_background = false,
   -- term_colors = false,
   compile = {
@@ -170,37 +272,6 @@ require("catppuccin").setup({
   color_overrides = {},
   highlight_overrides = {},
 });
-
-
--- [[ Setting options ]]
--- See `:help vim.o`
-vim.cmd.colorscheme "catppuccin-mocha"
--- Set highlight on search
-vim.o.hlsearch = false
--- Make line numbers default
-vim.wo.number = true
--- Enable mouse mode
-vim.o.mouse = 'a'
--- Sync clipboard between OS and Neovim.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
--- Enable break indent
-vim.o.breakindent = true
--- Save undo history
-vim.o.undofile = true
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
-
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
@@ -462,11 +533,11 @@ cmp.setup {
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
-    { name = 'nvim_lsp_signature_help' }
+    { name = 'nvim_lsp_signature_help' },
 
-    -- { name = "buffer" },
-    -- { name = "nvim_lua" },
-    -- { name = "path" },
+    { name = "buffer" },
+    { name = "nvim_lua" },
+    { name = "path" },
   },
 }
 
@@ -525,3 +596,78 @@ require("conform").setup({
     lsp_fallback = true,
   },
 })
+
+
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+
+require('Comment').setup()
+
+require "options"
+
+
+-- new file
+local map = vim.keymap.set
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+-- better indenting
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+map("n", "<leader>qf", "<cmd>qa!<cr>", { desc = "Quit all without saving" })
+
+-- diagnostic
+local diagnostic_goto = function(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
+end
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
