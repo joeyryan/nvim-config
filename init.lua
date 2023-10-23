@@ -6,7 +6,6 @@ vim.g.maplocalleader = ' '
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-
 -- Install package manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -33,6 +32,21 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+
+  -- Session management. This saves your session in the background,
+  -- keeping track of open buffers, window arrangement, and more.
+  -- You can restore sessions when returning through the dashboard.
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp" } },
+    -- stylua: ignore
+    keys = {
+      { "<leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
+      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
+    },
+  },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -623,31 +637,4 @@ require "options"
 
 require "keymaps"
 
--- Auto commands
-local function augroup(name)
-  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
-end
--- close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("close_with_q"),
-  pattern = {
-    "PlenaryTestPopup",
-    "help",
-    "lspinfo",
-    "man",
-    "notify",
-    "qf",
-    "query",
-    "spectre_panel",
-    "startuptime",
-    "tsplayground",
-    "neotest-output",
-    "checkhealth",
-    "neotest-summary",
-    "neotest-output-panel",
-  },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    map("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-  end,
-})
+require "autocmd"
