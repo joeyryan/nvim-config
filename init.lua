@@ -22,8 +22,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-    -- My kitty theme
-    { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
+  -- My kitty theme
+  { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
 
   -- NOTE: First, some plugins that don't require any configuration
 
@@ -42,7 +42,7 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -73,7 +73,7 @@ require('lazy').setup({
       {
         'windwp/nvim-autopairs',
         opts = {} -- this is equalent to setup({}) function
-    }
+      }
     },
   },
 
@@ -136,98 +136,98 @@ require('lazy').setup({
   },
 
   {
-  "folke/todo-comments.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-},
-
-{
-  "nvim-pack/nvim-spectre",
-  cmd = "Spectre",
-  opts = { open_cmd = "noswapfile vnew" },
-  -- stylua: ignore
-  keys = {
-    { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
   },
-},
 
-{
-  "lewis6991/gitsigns.nvim",
-  opts = {
-    signs = {
-      add = { text = "▎" },
-      change = { text = "▎" },
-      delete = { text = "" },
-      topdelete = { text = "" },
-      changedelete = { text = "▎" },
-      untracked = { text = "▎" },
+  {
+    "nvim-pack/nvim-spectre",
+    cmd = "Spectre",
+    opts = { open_cmd = "noswapfile vnew" },
+    -- stylua: ignore
+    keys = {
+      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
     },
-    on_attach = function(buffer)
-      local gs = package.loaded.gitsigns
-
-      local function map(mode, l, r, desc)
-        vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-      end
-
-      -- stylua: ignore start
-      map("n", "]h", gs.next_hunk, "Next Hunk")
-      map("n", "[h", gs.prev_hunk, "Prev Hunk")
-      map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-      map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
-      map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-      map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-      map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-      map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
-      map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
-      map("n", "<leader>ghd", gs.diffthis, "Diff This")
-      map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
-      map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-    end,
   },
-},
 
-{
-  "lukas-reineke/indent-blankline.nvim",
-  opts = {
-    indent = {
-      char = "│",
-      tab_char = "│",
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
+
+        -- stylua: ignore start
+        map("n", "]h", gs.next_hunk, "Next Hunk")
+        map("n", "[h", gs.prev_hunk, "Prev Hunk")
+        map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+        map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+        map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+        map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+        map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+        map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+        map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+        map("n", "<leader>ghd", gs.diffthis, "Diff This")
+        map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+      end,
     },
-    scope = { enabled = false },
-    exclude = {
-      filetypes = {
-        "help",
-        "alpha",
-        "dashboard",
-        "neo-tree",
-        "Trouble",
-        "lazy",
-        "mason",
-        "notify",
-        "toggleterm",
-        "lazyterm",
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      indent = {
+        char = "│",
+        tab_char = "│",
+      },
+      scope = { enabled = false },
+      exclude = {
+        filetypes = {
+          "help",
+          "alpha",
+          "dashboard",
+          "neo-tree",
+          "Trouble",
+          "lazy",
+          "mason",
+          "notify",
+          "toggleterm",
+          "lazyterm",
+        },
       },
     },
+    main = "ibl",
   },
-  main = "ibl",
-},
 
-{
-  'numToStr/Comment.nvim',
-  opts = {
+  {
+    'numToStr/Comment.nvim',
+    opts = {
       -- add any options here
+    },
+    lazy = true,
   },
-  lazy = true,
-},
 
-{
-  "NvChad/nvim-colorizer.lua",
-  lazy = true
-}
+  {
+    "NvChad/nvim-colorizer.lua",
+    lazy = true
+  }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -296,35 +296,6 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
-
--- See `:help telescope.builtin`
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
-
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
-
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Remap for dealing with word wrap
--- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
--- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
 
 
 require('Comment').setup {
@@ -403,11 +374,6 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 
 
@@ -577,9 +543,6 @@ require("nvim-tree").setup({
   },
 })
 
-vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeToggle <CR>", { desc = 'Toggle nvimtree' })
--- vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeFocus <CR>", { desc = 'Focus nvimtree' })
-
 
 -- Setup bufferline
 require("bufferline").setup {
@@ -587,18 +550,6 @@ require("bufferline").setup {
     tab_size = 20,
   }
 }
-
-vim.keymap.set('n', '<tab>', "<cmd> BufferLineCycleNext <CR>", { desc = 'Go to next bufferline in order' })
-vim.keymap.set('n', '<S-tab>', "<cmd> BufferLineCyclePrev <CR>", { desc = 'Go to previous bufferline in order' })
-
-
--- Swap between windows easier
-vim.keymap.set('n', '<C-h>', "<C-w>h", { desc = 'Window left' })
-vim.keymap.set('n', '<C-l>', "<C-w>l", { desc = 'Window right' })
-vim.keymap.set('n', '<C-j>', "<C-w>j", { desc = 'Window down' })
-vim.keymap.set('n', '<C-k>', "<C-w>k", { desc = 'Window up' })
-
-vim.keymap.set('n', '<C-\\>', "<C-w>v", { desc = 'Split view vertically' })
 
 require("conform").setup({
   formatters_by_ft = {
@@ -623,8 +574,8 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -639,18 +590,18 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_c = { 'filename' },
+    lualine_x = { 'location' },
     lualine_y = {},
     lualine_z = {}
   },
@@ -668,6 +619,52 @@ require "options"
 
 local map = vim.keymap.set
 
+
+-- Telescope
+local builtin = require('telescope.builtin')
+map('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
+map('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+map('n', '<leader>/', function()
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = '[/] Fuzzily search in current buffer' })
+
+map('n', '<leader>ff', builtin.find_files, {})
+map('n', '<leader>fg', builtin.live_grep, {})
+map('n', '<leader>fb', builtin.buffers, {})
+map('n', '<leader>fh', builtin.help_tags, {})
+
+
+-- [[ Basic Keymaps ]]
+
+map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+-- Remap for dealing with word wrap
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+
+
+-- Nvim tree
+map('n', '<leader>e', "<cmd> NvimTreeToggle <CR>", { desc = 'Toggle nvimtree' })
+-- map('n', '<leader>e', "<cmd> NvimTreeFocus <CR>", { desc = 'Focus nvimtree' })
+
+-- Bufferline
+map('n', '<tab>', "<cmd> BufferLineCycleNext <CR>", { desc = 'Go to next bufferline in order' })
+map('n', '<S-tab>', "<cmd> BufferLineCyclePrev <CR>", { desc = 'Go to previous bufferline in order' })
+
+
+-- Swap between windows easier
+map('n', '<C-h>', "<C-w>h", { desc = 'Window left' })
+map('n', '<C-l>', "<C-w>l", { desc = 'Window right' })
+map('n', '<C-j>', "<C-w>j", { desc = 'Window down' })
+map('n', '<C-k>', "<C-w>k", { desc = 'Window up' })
+
+map('n', '<C-\\>', "<C-w>v", { desc = 'Split view vertically' })
+
 -- diagnostic
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
@@ -676,6 +673,7 @@ local diagnostic_goto = function(next, severity)
     go({ severity = severity })
   end
 end
+map('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
 map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
@@ -693,17 +691,15 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-map("n", "<leader>qf", "<cmd>qa!<cr>", { desc = "Quit all without saving" })
+map("n", "<leader>qq", "<cmd>confirm q<cr>", { desc = "Quit nvim (with confirmation)" })
 map("n", "<leader>qb", "<cmd>bw!<cr>", { desc = "Close buffer without saving" })
 map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save all and quit" })
 
 
+-- Auto commands
 local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
-
-
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
@@ -725,6 +721,6 @@ vim.api.nvim_create_autocmd("FileType", {
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    map("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
   end,
 })
