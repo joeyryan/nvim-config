@@ -85,6 +85,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'JoosepAlviste/nvim-ts-context-commentstring',
     },
     build = ':TSUpdate',
   },
@@ -221,6 +222,11 @@ require('lazy').setup({
       -- add any options here
   },
   lazy = true,
+},
+
+{
+  "NvChad/nvim-colorizer.lua",
+  lazy = true
 }
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -236,7 +242,9 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
-}, {})
+}, {
+  install = { colorscheme = { "catppuccin" } },
+})
 
 require("catppuccin").setup({
   lazy = false,
@@ -317,6 +325,13 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 -- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+
+
+require('Comment').setup {
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+}
+
+
 -- Configure nvim-treesitter
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
@@ -379,6 +394,12 @@ require('nvim-treesitter.configs').setup {
         ['<leader>A'] = '@parameter.inner',
       },
     },
+  },
+  -- The following is for compatibility with nvism-ts-conext-commenstring
+  -- See https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#plugins-with-a-pre-comment-hook
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
   },
 }
 
@@ -556,8 +577,8 @@ require("nvim-tree").setup({
   },
 })
 
-vim.keymap.set('n', '<C-n>', "<cmd> NvimTreeToggle <CR>", { desc = 'Toggle nvimtree' })
-vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeFocus <CR>", { desc = 'Focus nvimtree' })
+vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeToggle <CR>", { desc = 'Toggle nvimtree' })
+-- vim.keymap.set('n', '<leader>e', "<cmd> NvimTreeFocus <CR>", { desc = 'Focus nvimtree' })
 
 
 -- Setup bufferline
@@ -639,22 +660,13 @@ require('lualine').setup {
   extensions = {}
 }
 
-require('Comment').setup()
+-- Attaches to every FileType mode
+require('colorizer').setup()
+
 
 require "options"
 
-
--- new file
 local map = vim.keymap.set
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-
--- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
-
--- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
-map("n", "<leader>qf", "<cmd>qa!<cr>", { desc = "Quit all without saving" })
 
 -- diagnostic
 local diagnostic_goto = function(next, severity)
@@ -671,3 +683,48 @@ map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
 map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
 map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+
+
+-- new file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+
+-- better indenting
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+map("n", "<leader>qf", "<cmd>qa!<cr>", { desc = "Quit all without saving" })
+map("n", "<leader>qb", "<cmd>bw!<cr>", { desc = "Close buffer without saving" })
+map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save all and quit" })
+
+
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+end
+
+
+-- close some filetypes with <q>
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("close_with_q"),
+  pattern = {
+    "PlenaryTestPopup",
+    "help",
+    "lspinfo",
+    "man",
+    "notify",
+    "qf",
+    "query",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+    "neotest-output",
+    "checkhealth",
+    "neotest-summary",
+    "neotest-output-panel",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
+})
