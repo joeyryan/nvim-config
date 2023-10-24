@@ -73,5 +73,5 @@ map("v", ">", ">gv")
 
 -- quit
 map("n", "<leader>qq", "<cmd>confirm q<cr>", { desc = "Quit nvim (with confirmation)" })
-map("n", "<leader>qb", "<cmd>bw!<cr>", { desc = "Close buffer without saving" })
+map("n", "<leader>qb", "<cmd>bw<cr>", { desc = "Close buffer" })
 map("n", "<leader>qw", "<cmd>wqa<cr>", { desc = "Save all and quit" })
