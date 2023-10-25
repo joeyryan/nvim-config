@@ -19,7 +19,6 @@ M.servers = {
   "yamlls",
   "marksman",
   "tailwindcss",
-  "omnisharp",
   "csharp_ls"
 }
 

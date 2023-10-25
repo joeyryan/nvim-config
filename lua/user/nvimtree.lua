@@ -26,9 +26,6 @@ function M.config()
   require("nvim-tree").setup {
     on_attach = my_on_attach,
     sync_root_with_cwd = true,
-    view = {
-      width = 36,
-    },
     renderer = {
       add_trailing = false,
       group_empty = false,

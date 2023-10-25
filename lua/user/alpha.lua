@@ -14,14 +14,6 @@ function M.config()
     return b
   end
 
-  dashboard.section.header.val = {
-    [[                               __                ]],
-    [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-    [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-    [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-    [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-    [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
-  }
 
   dashboard.section.header.val = {
     [[🛸　　　 　🌎　°　　🌓　•　　.°•　　　🚀 ✯   ]],
@@ -30,14 +22,6 @@ function M.config()
     [[                 ▁▂▃▄▅▆▇▇▆▅▄▃▂▁.             ]],
   }
 
-  -- dashboard.section.header.val = {
-  --   [[ ★　✯   🛸                    🪐   .°•    |    ]],
-  --   [[    __     ° ★　•       🛰       __      / \   ]],
-  --   [[   / /   ____ ___  ______  _____/ /_    | O |  ]],
-  --   [[  / /   / __ `/ / / / __ \/ ___/ __ \   | O |  ]],
-  --   [[ / /___/ /_/ / /_/ / / / / /__/ / / /  /| | |\ ]],
-  --   [[/_____/\__,_/\__,_/_/ /_/\___/_/ /_/  /_(.|.)_\]],
-  -- }
 
   dashboard.section.buttons.val = {
     button("f", icons.ui.Files .. " Find file", ":Telescope find_files <CR>"),
@@ -50,7 +34,7 @@ function M.config()
     button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
   }
   local function footer()
-    return "meow"
+    return "chrisatmachine.com"
   end
 
   dashboard.section.footer.val = footer()
