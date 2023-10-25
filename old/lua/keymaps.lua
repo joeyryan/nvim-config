@@ -3,20 +3,13 @@ local map = vim.keymap.set
 
 -- Telescope
 local builtin = require('telescope.builtin')
-map('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
+map('n', '<leader>fr', builtin.oldfiles, { desc = 'Find recently opened files' })
 map('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-map('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
 
-map('n', '<leader>ff', builtin.find_files, {})
-map('n', '<leader>fg', builtin.live_grep, {})
-map('n', '<leader>fb', builtin.buffers, {})
-map('n', '<leader>fh', builtin.help_tags, {})
+map('n', '<leader>ff', builtin.find_files, { desc = "Find file" })
+map('n', '<leader>fg', builtin.live_grep, { desc = "Live grep" })
+map('n', '<leader>fb', builtin.buffers, { desc = "Find buffer" })
+map('n', '<leader>fh', builtin.help_tags, { desc = "Find help tag" })
 
 
 -- [[ Basic Keymaps ]]

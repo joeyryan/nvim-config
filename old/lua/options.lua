@@ -1,5 +1,6 @@
 vim.cmd.colorscheme "catppuccin-mocha"
 
+vim.opt.background = "dark"
 vim.opt.breakindent = true                                -- Enable break indent
 vim.opt.clipboard = "unnamedplus"                         -- Sync clipboard between OS and Neovim.
 vim.opt.completeopt = 'longest,menuone,noselect,noinsert' -- Set completeopt to have a better completion experience
