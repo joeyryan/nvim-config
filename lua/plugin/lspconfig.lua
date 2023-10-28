@@ -60,6 +60,10 @@ function M.config()
     "yamlls",
     "marksman",
     "tailwindcss",
+    "eslint",
+    "angularls",
+    "csharp_ls",
+    -- "omnisharp"
   }
 
   local default_diagnostic_config = {
@@ -72,9 +76,9 @@ function M.config()
         { name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
       },
     },
-    virtual_text = false,
+    virtual_text = true,
     update_in_insert = false,
-    underline = true,
+    underline = false,
     severity_sort = true,
     float = {
       focusable = true,

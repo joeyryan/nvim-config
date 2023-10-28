@@ -39,7 +39,8 @@ function M.config()
       "c_sharp",
       "sql",
       "json",
-      "tsx" }, -- put the language you want in this array
+      "tsx",
+    },  -- put the language you want in this array
     ignore_install = { "" },
     sync_install = false,
     highlight = {

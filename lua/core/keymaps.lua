@@ -32,5 +32,19 @@ vim.cmd [[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definiti
 vim.cmd [[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]]
 -- vim.cmd [[:amenu 10.120 mousemenu.-sep- *]]
 
-vim.keymap.set("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
-vim.keymap.set("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
+keymap("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
+keymap("n", "<Tab>", "<cmd>:popup mousemenu<CR>")
+
+-- Swap between windows easier
+keymap('n', '<C-h>', "<C-w>h", { desc = 'Window left' })
+keymap('n', '<C-l>', "<C-w>l", { desc = 'Window right' })
+keymap('n', '<C-j>', "<C-w>j", { desc = 'Window down' })
+keymap('n', '<C-k>', "<C-w>k", { desc = 'Window up' })
+
+keymap('n', '<C-\\>', "<C-w>v", { desc = 'Split view vertically' })
+
+keymap("n", "<leader>c", "<cmd>bw<cr>", { desc = "Close buffer" })
+
+-- Bufferline
+keymap('n', '<tab>', "<cmd> BufferLineCycleNext <CR>", { desc = 'Go to next bufferline in order' })
+keymap('n', '<S-tab>', "<cmd> BufferLineCyclePrev <CR>", { desc = 'Go to previous bufferline in order' })

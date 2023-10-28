@@ -33,7 +33,7 @@ function M.config()
       full_name = false,
       highlight_opened_files = "none",
       root_folder_label = ":t",
-      indent_width = 2,
+      indent_width = 1,
       indent_markers = {
         enable = false,
         inline_arrows = true,

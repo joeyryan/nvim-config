@@ -62,12 +62,12 @@ function M.config()
 
       find_files = {
         theme = "dropdown",
-        previewer = false,
+        previewer = true,
       },
 
       buffers = {
         theme = "dropdown",
-        previewer = false,
+        previewer = true,
         initial_mode = "normal",
         mappings = {
           i = {
