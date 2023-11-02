@@ -8,9 +8,10 @@ local M = {
 
 function M.config()
   local icons = require "plugin.icons"
+  local telescope = require "telescope"
   local actions = require "telescope.actions"
 
-  require("telescope").setup {
+  telescope.setup {
     defaults = {
       prompt_prefix = icons.ui.Telescope .. " ",
       selection_caret = icons.ui.Forward .. " ",
@@ -20,9 +21,21 @@ function M.config()
       path_display = { "smart" },
       color_devicons = true,
       set_env = { ["COLORTERM"] = "truecolor" },
-      sorting_strategy = nil,
-      layout_strategy = nil,
-      layout_config = {},
+      sorting_strategy = "ascending",
+      layout_strategy = "horizontal",
+      layout_config = {
+        horizontal = {
+          prompt_position = "top",
+          preview_width = 0.55,
+          results_width = 0.8,
+        },
+        vertical = {
+          mirror = false,
+        },
+        width = 0.87,
+        height = 0.80,
+        preview_cutoff = 120,
+      },
       vimgrep_arguments = {
         "rg",
         "--color=never",
@@ -52,18 +65,18 @@ function M.config()
       },
     },
     pickers = {
-      live_grep = {
-        theme = "dropdown",
-      },
+      -- live_grep = {
+      --   theme = "dropdown",
+      -- },
 
-      grep_string = {
-        theme = "dropdown",
-      },
+      -- grep_string = {
+      --   theme = "dropdown",
+      -- },
 
-      find_files = {
-        theme = "dropdown",
-        previewer = true,
-      },
+      -- find_files = {
+      --   theme = "dropdown",
+      --   previewer = true,
+      -- },
 
       buffers = {
         theme = "dropdown",
@@ -88,26 +101,35 @@ function M.config()
         enable_preview = true,
       },
 
-      lsp_references = {
-        theme = "dropdown",
-        initial_mode = "normal",
-      },
+      -- lsp_references = {
+      --   theme = "dropdown",
+      --   initial_mode = "normal",
+      -- },
 
-      lsp_definitions = {
-        theme = "dropdown",
-        initial_mode = "normal",
-      },
+      -- lsp_definitions = {
+      --   theme = "dropdown",
+      --   initial_mode = "normal",
+      -- },
 
-      lsp_declarations = {
-        theme = "dropdown",
-        initial_mode = "normal",
-      },
+      -- lsp_declarations = {
+      --   theme = "dropdown",
+      --   initial_mode = "normal",
+      -- },
 
-      lsp_implementations = {
-        theme = "dropdown",
-        initial_mode = "normal",
-      },
+      -- lsp_implementations = {
+      --   theme = "dropdown",
+      --   initial_mode = "normal",
+      -- },
     },
+    file_ignore_patterns = { "node_modules" },
+    -- file_sorter = require("telescope.sorters").get_fuzzy_file,
+    -- generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+    -- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+    -- grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+    -- qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+    -- -- Developer configurations: Not meant for general override
+    -- buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+
     extensions = {
       fzf = {
         fuzzy = true,                   -- false will only do exact matching
@@ -117,6 +139,8 @@ function M.config()
       },
     },
   }
+
+  telescope.load_extension('fzf')
 end
 
 return M
