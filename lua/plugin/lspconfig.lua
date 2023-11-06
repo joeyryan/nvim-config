@@ -64,6 +64,7 @@ function M.config()
     "angularls",
     "csharp_ls",
     -- "omnisharp"
+    "terraformls",
   }
 
   local default_diagnostic_config = {

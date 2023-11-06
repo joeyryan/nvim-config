@@ -23,6 +23,7 @@ M.servers = {
   "eslint",
   "angularls",
   -- "omnisharp"
+  "terraformls",
 }
 
 function M.config()
