@@ -40,6 +40,7 @@ function M.config()
       "sql",
       "json",
       "tsx",
+      "terraform",
     },  -- put the language you want in this array
     ignore_install = { "" },
     sync_install = false,

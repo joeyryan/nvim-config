@@ -35,7 +35,8 @@ M.servers = {
   "csharp_ls",
   "eslint",
   "angularls",
-  "omnisharp"
+  "omnisharp",
+  "terraformls"
 }
 
 local function lsp_keymaps(bufnr)
