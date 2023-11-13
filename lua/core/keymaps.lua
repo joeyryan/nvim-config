@@ -43,12 +43,6 @@ keymap('n', '<C-k>', "<C-w>k", { desc = 'Window up' })
 
 keymap('n', '<C-\\>', "<C-w>v", { desc = 'Split view vertically' })
 
-keymap("n", "<leader>c", "<cmd>bw<cr>", { desc = "Close buffer" })
-
--- Bufferline
-keymap('n', '<tab>', "<cmd> BufferLineCycleNext <CR>", { desc = 'Go to next bufferline in order' })
-keymap('n', '<S-tab>', "<cmd> BufferLineCyclePrev <CR>", { desc = 'Go to previous bufferline in [order' })
-
 keymap('n', '<C-Up>', "<cmd>resize -2<CR>", { desc = 'Resize split up' })
 keymap('n', '<C-Down>', "<cmd>resize +2<CR>", { desc = 'Resize split down' })
 keymap('n', '<C-Left>', "<cmd>vertical resize -2<CR>", { desc = 'Resize split left' })

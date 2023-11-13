@@ -1,13 +1,41 @@
 local M = {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
+  -- event = { "BufReadPre", "BufNewFile" },
   commit = "e49b1e90c1781ce372013de3fa93a91ea29fc34a",
   dependencies = {
     {
       "folke/neodev.nvim",
       commit = "b094a663ccb71733543d8254b988e6bebdbdaca4",
     },
+    {
+      "williamboman/mason-lspconfig.nvim",
+      commit = "e7b64c11035aa924f87385b72145e0ccf68a7e0a",
+    },
+    {
+      "williamboman/mason.nvim",
+    },
+    {
+      "nvim-lua/plenary.nvim",
+    }
   },
+}
+
+M.servers = {
+  "lua_ls",
+  "cssls",
+  "html",
+  "tsserver",
+  "astro",
+  "pyright",
+  "bashls",
+  "jsonls",
+  "yamlls",
+  "marksman",
+  "tailwindcss",
+  "csharp_ls",
+  "eslint",
+  "angularls",
+  "omnisharp"
 }
 
 local function lsp_keymaps(bufnr)
@@ -45,26 +73,17 @@ function M.common_capabilities()
 end
 
 function M.config()
+  require("mason").setup {
+    ui = {
+      border = "rounded",
+    },
+  }
+  require("mason-lspconfig").setup {
+    ensure_installed = M.servers,
+  }
+
   local lspconfig = require "lspconfig"
   local icons = require "plugin.icons"
-
-  local servers = {
-    "lua_ls",
-    "cssls",
-    "html",
-    "tsserver",
-    "astro",
-    "pyright",
-    "bashls",
-    "jsonls",
-    "yamlls",
-    "marksman",
-    "tailwindcss",
-    "eslint",
-    "angularls",
-    "csharp_ls",
-    -- "omnisharp"
-  }
 
   local default_diagnostic_config = {
     signs = {
@@ -100,7 +119,7 @@ function M.config()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
   require("lspconfig.ui.windows").default_options.border = "rounded"
 
-  for _, server in pairs(servers) do
+  for _, server in pairs(M.servers) do
     local opts = {
       on_attach = M.on_attach,
       capabilities = M.common_capabilities(),

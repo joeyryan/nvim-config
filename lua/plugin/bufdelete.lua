@@ -9,6 +9,7 @@ function M.config()
   local opts = { noremap = true, silent = true }
   -- keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
   keymap("n", "Q", ":lua require('bufdelete').bufdelete(0, false)<cr>", opts)
+  keymap("n", "<leader>c", ":lua require('bufdelete').bufdelete(0, false)<cr>", { desc = "Close buffer" })
 end
 
 return M

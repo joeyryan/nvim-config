@@ -6,6 +6,10 @@ function M.config()
       tab_size = 20,
     }
   }
+
+  local keymap = vim.api.nvim_set_keymap
+  keymap('n', '<tab>', "<cmd> BufferLineCycleNext <CR>", { desc = 'Go to next bufferline in order' })
+  keymap('n', '<S-tab>', "<cmd> BufferLineCyclePrev <CR>", { desc = 'Go to previous bufferline in [order' })
 end
 
 return M
