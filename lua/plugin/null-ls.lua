@@ -9,7 +9,7 @@ function M.config()
 
   null_ls.setup {
     sources = {
-      formatting.stylua,
+      --formatting.stylua,
       formatting.prettier,
       formatting.prettier.with {
         extra_filetypes = { "toml" },
