@@ -44,7 +44,7 @@ return {
 		FileRenamed = " ",
 		FileStaged = "󰄴",
 		FileUnmerged = "",
-		FileUnstaged = "󰧞",
+		FileUnstaged = "*",
 		FileUntracked = "",
 		Diff = " ",
 		Repo = " ",
