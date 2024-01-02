@@ -18,7 +18,7 @@ else
 	spec("plugin.schemastore")
 	spec("plugin.lsp_config")
 	spec("plugin.breadcrumbs")
-	-- spec("plugin.null-ls")
+	spec("plugin.null-ls")
 	spec("plugin.illuminate")
 	spec("plugin.telescope")
 	--	spec("plugin.telescope-tabs")
