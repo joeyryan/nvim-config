@@ -36,7 +36,7 @@ else
 	spec("plugin.project")
 	spec("plugin.toggleterm")
 	spec("plugin.bufdelete")
-	spec("plugin.conform")
+	-- spec("plugin.conform")
 	-- spec "plugin.dapui"
 	require("plugin.lazy")
 end
