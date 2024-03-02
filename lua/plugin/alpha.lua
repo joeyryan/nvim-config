@@ -1,3 +1,4 @@
+-- Pretty cool dashboard on startup
 local M = {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
