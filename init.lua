@@ -18,7 +18,7 @@ else
 	spec("plugin.schemastore")
 	spec("plugin.lsp_config")
 	spec("plugin.breadcrumbs")
-	-- spec("plugin.null-ls")
+	spec("plugin.null-ls")
 	spec("plugin.illuminate")
 	spec("plugin.telescope")
 	--	spec("plugin.telescope-tabs")
@@ -36,7 +36,7 @@ else
 	spec("plugin.project")
 	spec("plugin.toggleterm")
 	spec("plugin.bufdelete")
-	spec("plugin.conform")
+	-- spec("plugin.conform")
 	-- spec "plugin.dapui"
 	require("plugin.lazy")
 end
