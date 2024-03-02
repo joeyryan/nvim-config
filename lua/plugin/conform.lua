@@ -1,3 +1,4 @@
+-- Formats code on save
 local M = {
 	"stevearc/conform.nvim",
 	opts = {},

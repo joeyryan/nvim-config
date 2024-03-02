@@ -12,8 +12,8 @@ if vim.g.vscode then
 --
 else
 	spec("plugin.colorscheme")
-	spec("plugin.bufferline")
 	spec("plugin.devicons")
+	spec("plugin.bufferline")
 	spec("plugin.treesitter")
 	spec("plugin.schemastore")
 	spec("plugin.lsp_config")

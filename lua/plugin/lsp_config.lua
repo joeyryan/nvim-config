@@ -1,3 +1,4 @@
+-- A few plugins to enable and configure LSP support
 local M = {
 	"neovim/nvim-lspconfig",
 	-- event = { "BufReadPre", "BufNewFile" },

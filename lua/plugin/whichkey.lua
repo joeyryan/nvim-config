@@ -1,3 +1,4 @@
+-- Shows a popup that displays keybinding definitions
 local M = {
 	"folke/which-key.nvim",
 	event = "VeryLazy",

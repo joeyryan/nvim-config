@@ -1,3 +1,4 @@
+-- Project management support that integrates with Telescope
 local M = {
 	"ahmedkhalf/project.nvim",
 	event = "VeryLazy",

@@ -1,3 +1,4 @@
+-- A file explorer sidebar window
 local M = {
 	"nvim-tree/nvim-tree.lua",
 	event = "VeryLazy",
