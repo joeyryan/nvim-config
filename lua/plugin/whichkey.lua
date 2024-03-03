@@ -11,6 +11,7 @@ function M.config()
 		["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
 		["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 		["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+		["o"] = { "<cmd>NvimTreeFocus<CR>", "Focus Explorer" },
 		b = {
 			name = "Buffers",
 			b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
@@ -32,18 +33,18 @@ function M.config()
 			q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
 			U = { "<cmd>lua require'dapui'.toggle({reset = true})<cr>", "Toggle UI" },
 		},
-		p = {
-			name = "Plugins",
-			i = { "<cmd>Lazy install<cr>", "Install" },
-			s = { "<cmd>Lazy sync<cr>", "Sync" },
-			S = { "<cmd>Lazy clear<cr>", "Status" },
-			c = { "<cmd>Lazy clean<cr>", "Clean" },
-			u = { "<cmd>Lazy update<cr>", "Update" },
-			p = { "<cmd>Lazy profile<cr>", "Profile" },
-			l = { "<cmd>Lazy log<cr>", "Log" },
-			d = { "<cmd>Lazy debug<cr>", "Debug" },
-		},
-
+		-- p = {
+		-- 	name = "Plugins",
+		-- 	i = { "<cmd>Lazy install<cr>", "Install" },
+		-- 	s = { "<cmd>Lazy sync<cr>", "Sync" },
+		-- 	S = { "<cmd>Lazy clear<cr>", "Status" },
+		-- 	c = { "<cmd>Lazy clean<cr>", "Clean" },
+		-- 	u = { "<cmd>Lazy update<cr>", "Update" },
+		-- 	p = { "<cmd>Lazy profile<cr>", "Profile" },
+		-- 	l = { "<cmd>Lazy log<cr>", "Log" },
+		-- 	d = { "<cmd>Lazy debug<cr>", "Debug" },
+		-- },
+		--
 		f = {
 			name = "Find",
 			b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -117,25 +118,25 @@ function M.config()
 			e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
 		},
 
-		t = {
-			name = "Tab",
-			t = {
-				"<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
-				"Find Tab",
-			},
-			a = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-			A = { "<cmd>tabnew %<cr>", "New Tab" },
-			n = { "<cmd>tabn<cr>", "Next" },
-			o = { "<cmd>tabonly<cr>", "Only" },
-			p = { "<cmd>tabp<cr>", "Prev" },
-			h = { "<cmd>-tabmove<cr>", "Move Left" },
-			l = { "<cmd>+tabmove<cr>", "Move Right" },
-		},
-
-		T = {
-			name = "Treesitter",
-			i = { ":TSConfigInfo<cr>", "Info" },
-		},
+		-- t = {
+		-- 	name = "Tab",
+		-- 	t = {
+		-- 		"<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
+		-- 		"Find Tab",
+		-- 	},
+		-- 	a = { "<cmd>$tabnew<cr>", "New Empty Tab" },
+		-- 	A = { "<cmd>tabnew %<cr>", "New Tab" },
+		-- 	n = { "<cmd>tabn<cr>", "Next" },
+		-- 	o = { "<cmd>tabonly<cr>", "Only" },
+		-- 	p = { "<cmd>tabp<cr>", "Prev" },
+		-- 	h = { "<cmd>-tabmove<cr>", "Move Left" },
+		-- 	l = { "<cmd>+tabmove<cr>", "Move Right" },
+		-- },
+		--
+		-- T = {
+		-- 	name = "Treesitter",
+		-- 	i = { ":TSConfigInfo<cr>", "Info" },
+		-- },
 	}
 
 	local opts = {
