@@ -14,7 +14,6 @@ function M.config()
 		["o"] = { "<cmd>NvimTreeFocus<CR>", "Focus Explorer" },
 		b = {
 			name = "Buffers",
-			b = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
 		},
 		d = {
 			name = "Debug",
@@ -47,7 +46,8 @@ function M.config()
 		--
 		f = {
 			name = "Find",
-			b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+			b = { "<cmd>Telescope buffers previewer=false<cr>", "Find Buffer" },
+			-- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 			c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 			f = { "<cmd>Telescope find_files<cr>", "Find files" },
 			p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
