@@ -86,7 +86,7 @@ function M.config()
 	})
 
 	local lspconfig = require("lspconfig")
-	local icons = require("plugin.icons")
+	local icons = require("core.icons")
 
 	local default_diagnostic_config = {
 		signs = {

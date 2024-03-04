@@ -7,7 +7,7 @@ local M = {
 function M.config()
 	local sl_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
 	vim.api.nvim_set_hl(0, "Copilot", { fg = "#6CC644", bg = sl_hl.background })
-	local icons = require("plugin.icons")
+	local icons = require("core.icons")
 	local diff = {
 		"diff",
 		colored = true,

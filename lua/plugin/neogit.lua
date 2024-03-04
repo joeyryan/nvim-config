@@ -6,7 +6,7 @@ local M = {
 }
 
 function M.config()
-	local icons = require("plugin.icons")
+	local icons = require("core.icons")
 
 	require("neogit").setup({
 		disable_signs = false,

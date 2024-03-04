@@ -6,7 +6,7 @@ local M = {
 }
 
 function M.config()
-	local icons = require("plugin.icons")
+	local icons = require("core.icons")
 
 	require("indent_blankline").setup({
 		buftype_exclude = { "terminal", "nofile" },

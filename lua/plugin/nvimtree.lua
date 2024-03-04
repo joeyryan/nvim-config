@@ -23,15 +23,15 @@ function M.config()
 		vim.keymap.set("n", "?", api.tree.toggle_help, opts("Show Commands Lol"))
 	end
 
-	local icons = require("plugin.icons")
+	local icons = require("core.icons")
 
 	require("nvim-tree").setup({
 		on_attach = my_on_attach,
 		sync_root_with_cwd = true,
 		renderer = {
 			add_trailing = false,
-			group_empty = false,
-			highlight_git = false,
+			group_empty = true,
+			highlight_git = true,
 			full_name = false,
 			highlight_opened_files = "none",
 			root_folder_label = ":t",

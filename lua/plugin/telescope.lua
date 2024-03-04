@@ -8,7 +8,7 @@ local M = {
 }
 
 function M.config()
-	local icons = require("plugin.icons")
+	local icons = require("core.icons")
 	local telescope = require("telescope")
 	local actions = require("telescope.actions")
 

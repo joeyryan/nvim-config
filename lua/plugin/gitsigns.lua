@@ -6,7 +6,7 @@ local M = {
 	cmd = "Gitsigns",
 }
 M.config = function()
-	local icons = require("plugin.icons")
+	local icons = require("core.icons")
 
 	require("gitsigns").setup({
 		signs = {
