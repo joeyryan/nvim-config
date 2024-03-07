@@ -21,7 +21,6 @@ else
 	-- spec("plugin.null-ls")
 	spec("plugin.illuminate")
 	spec("plugin.telescope")
-	--	spec("plugin.telescope-tabs")
 	spec("plugin.nvimtree")
 	spec("plugin.lualine")
 	spec("plugin.whichkey")

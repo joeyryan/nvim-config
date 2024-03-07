@@ -117,26 +117,6 @@ function M.config()
 			},
 			e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
 		},
-
-		-- t = {
-		-- 	name = "Tab",
-		-- 	t = {
-		-- 		"<cmd>lua require('telescope').extensions['telescope-tabs'].list_tabs(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Tabs'})<cr>",
-		-- 		"Find Tab",
-		-- 	},
-		-- 	a = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-		-- 	A = { "<cmd>tabnew %<cr>", "New Tab" },
-		-- 	n = { "<cmd>tabn<cr>", "Next" },
-		-- 	o = { "<cmd>tabonly<cr>", "Only" },
-		-- 	p = { "<cmd>tabp<cr>", "Prev" },
-		-- 	h = { "<cmd>-tabmove<cr>", "Move Left" },
-		-- 	l = { "<cmd>+tabmove<cr>", "Move Right" },
-		-- },
-		--
-		-- T = {
-		-- 	name = "Treesitter",
-		-- 	i = { ":TSConfigInfo<cr>", "Info" },
-		-- },
 	}
 
 	local opts = {
