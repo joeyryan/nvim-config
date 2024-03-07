@@ -5,6 +5,7 @@ function M.config()
 	require("bufferline").setup({
 		options = {
 			tab_size = 20,
+			separator_style = "slant",
 		},
 	})
 

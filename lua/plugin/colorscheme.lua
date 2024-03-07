@@ -15,7 +15,7 @@ function M.config()
 			path = vim.fn.stdpath("cache") .. "/catppuccin",
 		},
 		dim_inactive = {
-			enabled = false,
+			enabled = true,
 			shade = "dark",
 			percentage = 0.15,
 		},
@@ -44,7 +44,9 @@ function M.config()
 			gitsigns = true,
 			fidget = true,
 			bufferline = true,
-
+			-- dap = true,
+			-- dap_ui = true,
+			which_key = true,
 			-- For various plugins integrations see https://github.com/catppuccin/nvim#integrations
 		},
 		color_overrides = {

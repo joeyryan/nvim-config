@@ -23,7 +23,6 @@ else
 	spec("plugin.telescope")
 	spec("plugin.nvimtree")
 	spec("plugin.lualine")
-	spec("plugin.whichkey")
 	spec("plugin.cmp")
 	spec("plugin.comment")
 	spec("plugin.gitsigns")
@@ -37,5 +36,6 @@ else
 	spec("plugin.bufdelete")
 	spec("plugin.conform")
 	-- spec "plugin.dapui"
+	spec("plugin.whichkey")
 	require("plugin.lazy")
 end

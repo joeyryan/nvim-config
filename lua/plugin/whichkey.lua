@@ -8,10 +8,13 @@ local M = {
 function M.config()
 	local mappings = {
 		["q"] = { "<cmd>confirm qa<CR>", "Quit" },
+		["c"] = { ":lua require('bufdelete').bufdelete(0, false)<cr>", "Close" },
+		["w"] = { "<cmd>w<CR>", "Save" },
 		["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
 		["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-		["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
-		["o"] = { "<cmd>NvimTreeFocus<CR>", "Focus Explorer" },
+		-- ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+		-- ["o"] = { "<cmd>NvimTreeFocus<CR>", "Focus Explorer" },
+		["e"] = { "<cmd>NvimTreeFocus<CR>", "Explorer" },
 		b = {
 			name = "Buffers",
 		},
