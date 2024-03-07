@@ -46,7 +46,9 @@ vim.opt.fillchars:append({
 
 vim.opt.shortmess:append("c")
 
+-- allow cursor to wrap around lines
 vim.cmd("set whichwrap+=<,>,[,],h,l")
+-- treat hyphens as part of a word
 vim.cmd([[set iskeyword+=-]])
 
 vim.g.netrw_banner = 0
