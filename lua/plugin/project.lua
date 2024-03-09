@@ -12,6 +12,7 @@ function M.config()
 		manual_mode = false,
 		detection_methods = { "pattern" },
 		patterns = {
+			"package.json",
 			".git",
 			"Makefile",
 			-- "package.json",
