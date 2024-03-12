@@ -21,6 +21,10 @@ keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
 -- Bind U to redo, since undo is u
 keymap("n", "U", "<C-R>")
 
+-- better copy and paste...
+keymap("v", "<leader>y", '"+y')
+keymap("n", "<leader>p", '"+p')
+
 -- Move between window panes with CTRL+H/J/K/L
 keymap("n", "<m-h>", "<C-w>h", opts)
 keymap("n", "<m-j>", "<C-w>j", opts)
