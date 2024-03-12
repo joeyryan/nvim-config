@@ -16,7 +16,7 @@ else
 	spec("plugin.bufferline")
 	spec("plugin.treesitter")
 	spec("plugin.schemastore")
-	spec("plugin.lsp_config")
+	spec("plugin.lsp")
 	spec("plugin.breadcrumbs")
 	-- spec("plugin.null-ls")
 	spec("plugin.illuminate")
@@ -27,7 +27,7 @@ else
 	spec("plugin.cmp")
 	spec("plugin.comment")
 	spec("plugin.gitsigns")
-	-- spec "plugin.neogit"
+	spec("plugin.neogit")
 	spec("plugin.diffview")
 	spec("plugin.indentline")
 	spec("plugin.alpha")
