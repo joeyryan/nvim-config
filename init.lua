@@ -17,6 +17,7 @@ else
 	spec("plugin.treesitter")
 	spec("plugin.schemastore")
 	spec("plugin.lsp")
+	spec("plugin.typescript-tools")
 	spec("plugin.breadcrumbs")
 	-- spec("plugin.null-ls")
 	spec("plugin.illuminate")
