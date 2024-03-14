@@ -1,11 +1,17 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+-- Disable right mouse click. I only want left click and scrolling. Git gud with keyboard.
+keymap("n", "<RightMouse>", "<LeftMouse>")
+keymap("i", "<RightMouse>", "<LeftMouse>")
+keymap("v", "<RightMouse>", "<LeftMouse>")
+keymap("x", "<RightMouse>", "<LeftMouse>")
+
 -- Right click menu
-keymap("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
-vim.cmd([[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]])
-vim.cmd([[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]])
-vim.cmd([[:amenu 10.120 mousemenu.-sep- *]])
+-- keymap("n", "<RightMouse>", "<cmd>:popup mousemenu<CR>")
+-- vim.cmd([[:amenu 10.100 mousemenu.Goto\ Definition <cmd>lua vim.lsp.buf.definition()<CR>]])
+-- vim.cmd([[:amenu 10.110 mousemenu.References <cmd>lua vim.lsp.buf.references()<CR>]])
+-- vim.cmd([[:amenu 10.120 mousemenu.-sep- *]])
 
 -- Set leader key to Space
 keymap("n", "<Space>", "", opts)
