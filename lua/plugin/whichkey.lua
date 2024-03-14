@@ -120,8 +120,38 @@ function M.config()
 			},
 			e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
 		},
+		t = {
+			name = "Trouble",
+
+			t = { "<cmd>lua require('trouble').toggle()<cr>", "Toggle" },
+			w = { "<cmd>lua require('trouble').toggle('workspace_diagnostics')<cr>", "Workspace Diagnostics" },
+			d = { "<cmd>lua require('trouble').toggle('document_diagnostics')<cr>", "Document Diagnostics" },
+			q = { "<cmd>lua require('trouble').toggle('quickfix')<cr>", "Quickfix" },
+			l = { "<cmd>lua require('trouble').toggle('loclist')<cr>", "Loclist" },
+			r = { "<cmd>lua require('trouble').toggle('lsp_references')<cr>", "LSP References" },
+		},
 	}
 
+	-- local trouble = require("trouble")
+	-- vim.keymap.set("n", "<leader>xx", function()
+	-- 	trouble.toggle()
+	-- end)
+	-- vim.keymap.set("n", "<leader>xw", function()
+	-- 	trouble.toggle("workspace_diagnostics")
+	-- end)
+	-- vim.keymap.set("n", "<leader>xd", function()
+	-- 	trouble.toggle("document_diagnostics")
+	-- end)
+	-- vim.keymap.set("n", "<leader>xq", function()
+	-- 	trouble.toggle("quickfix")
+	-- end)
+	-- vim.keymap.set("n", "<leader>xl", function()
+	-- 	trouble.toggle("loclist")
+	-- end)
+	-- vim.keymap.set("n", "gR", function()
+	-- 	trouble.toggle("lsp_references")
+	-- end)
+	--
 	local opts = {
 		mode = "n", -- NORMAL mode
 		prefix = "<leader>",
@@ -212,6 +242,9 @@ function M.config()
 
 	which_key.register(mappings, opts)
 	which_key.register(vmappings, vopts)
+	-- local keymap = require("core.utils").add_keymap
+	-- keymap(mappings, opts)
+	-- keymap(vmappings, vopts)
 end
 
 return M
