@@ -15,7 +15,7 @@ else
 	spec("plugin.devicons")
 	spec("plugin.bufferline")
 	spec("plugin.treesitter")
-	spec("plugin.schemastore")
+	-- spec("plugin.schemastore")
 	spec("plugin.lsp")
 	spec("plugin.typescript-tools")
 	spec("plugin.breadcrumbs")

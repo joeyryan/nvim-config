@@ -18,6 +18,9 @@ local M = {
 		{
 			"nvim-lua/plenary.nvim",
 		},
+		{
+			"b0o/schemastore.nvim",
+		},
 	},
 }
 
