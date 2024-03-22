@@ -1,7 +1,7 @@
 -- Add status bar to bottom of neovim window
 local M = {
 	"nvim-lualine/lualine.nvim",
-	commit = "7533b0ead663d80452210c0c089e5105089697e5",
+	-- commit = "7533b0ead663d80452210c0c089e5105089697e5",
 }
 
 function M.config()

@@ -2,15 +2,15 @@
 local M = {
 	"neovim/nvim-lspconfig",
 	-- event = { "BufReadPre", "BufNewFile" },
-	commit = "e49b1e90c1781ce372013de3fa93a91ea29fc34a",
+	-- commit = "e49b1e90c1781ce372013de3fa93a91ea29fc34a",
 	dependencies = {
 		{
 			"folke/neodev.nvim",
-			commit = "b094a663ccb71733543d8254b988e6bebdbdaca4",
+			-- commit = "b094a663ccb71733543d8254b988e6bebdbdaca4",
 		},
 		{
 			"williamboman/mason-lspconfig.nvim",
-			commit = "e7b64c11035aa924f87385b72145e0ccf68a7e0a",
+			-- commit = "e7b64c11035aa924f87385b72145e0ccf68a7e0a",
 		},
 		{
 			"williamboman/mason.nvim",
