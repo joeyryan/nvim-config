@@ -122,17 +122,20 @@ function M.config()
 		vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 
+	-- Setup LSP for each server in the servers list
 	for _, server in pairs(M.servers) do
 		local opts = {
 			on_attach = M.on_attach,
 			capabilities = M.common_capabilities(),
 		}
 
+		-- Check lspsettings folder for plugin specific config and load if found
 		local require_ok, settings = pcall(require, "plugin.lspsettings." .. server)
 		if require_ok then
 			opts = vim.tbl_deep_extend("force", settings, opts)
 		end
 
+		-- neodev is a lua specific plugin
 		if server == "lua_ls" then
 			require("neodev").setup({})
 		end
