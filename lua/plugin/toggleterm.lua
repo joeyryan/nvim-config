@@ -6,78 +6,6 @@ local M = {
 }
 
 function M.config()
-	local keybinds = {
-		{ nil, "<M-1>", "Horizontal Terminal", "horizontal", 0.3 },
-		{ nil, "<M-2>", "Vertical Terminal", "vertical", 0.4 },
-		{ nil, "<M-3>", "Float Terminal", "float", nil },
-	}
-
-	-- Get current buffer size
-	local function get_buf_size()
-		local cbuf = vim.api.nvim_get_current_buf()
-		local bufinfo = vim.tbl_filter(function(buf)
-			return buf.bufnr == cbuf
-		end, vim.fn.getwininfo(vim.api.nvim_get_current_win()))[1]
-		if bufinfo == nil then
-			return { width = -1, height = -1 }
-		end
-		return { width = bufinfo.width, height = bufinfo.height }
-	end
-
-	-- Calculate size of the terminal based on buffer size
-	-- If terminal is floating, and size is a decimal (percentage), terminal size is
-	-- set to be a percentage of the current buffer
-	local function get_dynamic_terminal_size(direction, size)
-		size = size
-		if direction ~= "float" and tostring(size):find(".", 1, true) then
-			size = math.min(size, 1.0)
-			local buf_sizes = get_buf_size()
-			local buf_size = direction == "horizontal" and buf_sizes.height or buf_sizes.width
-			return buf_size * size
-		else
-			return size
-		end
-	end
-
-	-- Create a terminal instance and toggle it
-	local execute_toggle = function(opts)
-		local Terminal = require("toggleterm.terminal").Terminal
-		local term = Terminal:new({ cmd = opts.cmd, count = opts.count, direction = opts.direction })
-		term:toggle(opts.size, opts.direction)
-	end
-
-	-- Function to map specified keybinding to execute_toggle function above
-	local add_toggle_keybind = function(opts)
-		local binary = opts.cmd:match("(%S+)")
-		if vim.fn.executable(binary) ~= 1 then
-			vim.notify("Skipping configuring executable " .. binary .. ". Please make sure it is installed properly.")
-			return
-		end
-
-		vim.keymap.set({ "n", "t" }, opts.keymap, function()
-			execute_toggle({ cmd = opts.cmd, count = opts.count, direction = opts.direction, size = opts.size() })
-		end, { desc = opts.label, noremap = true, silent = true })
-	end
-
-	-- Add keymappings for each entry in "execs" array,
-	-- which includes horizontal, vertical, and floating terminals
-	for i, exec in pairs(keybinds) do
-		local direction = exec[4]
-
-		local opts = {
-			cmd = exec[1] or vim.o.shell,
-			keymap = exec[2],
-			label = exec[3],
-			count = i + 100,
-			direction = direction,
-			size = function()
-				return get_dynamic_terminal_size(direction, exec[5])
-			end,
-		}
-
-		add_toggle_keybind(opts)
-	end
-
 	require("toggleterm").setup({
 		size = 20,
 		open_mapping = [[`]],
@@ -106,27 +34,6 @@ function M.config()
 			end,
 		},
 	})
-	vim.cmd([[
-  augroup terminal_setup | au!
-  autocmd TermOpen * nnoremap <buffer><LeftRelease> <LeftRelease>i
-  autocmd TermEnter * startinsert!
-  augroup end
-  ]])
-
-	vim.api.nvim_create_autocmd({ "TermEnter" }, {
-		pattern = { "*" },
-		callback = function()
-			vim.cmd("startinsert")
-		end,
-	})
-
-	local opts = { noremap = true, silent = true }
-	function _G.set_terminal_keymaps()
-		vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
-		vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
-		vim.api.nvim_buf_set_keymap(0, "t", "<m-k>", [[<C-\><C-n><C-W>k]], opts)
-		vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
-	end
 end
 
 return M
