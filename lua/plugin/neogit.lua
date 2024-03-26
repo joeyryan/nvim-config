@@ -2,7 +2,6 @@
 local M = {
 	"neogitorg/neogit",
 	event = "VeryLazy",
-	-- commit = "eb9d6b8f0840e4f2fa775bca7ec4a5df8b42ed6d",
 }
 
 function M.config()

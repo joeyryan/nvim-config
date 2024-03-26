@@ -2,10 +2,8 @@
 
 local M = {
 	"LunarVim/breadcrumbs.nvim",
-	-- commit = "1033b354f65206793831207d5c9047fc059e35c3",
 	dependencies = {
 		"SmiteshP/nvim-navic",
-		-- commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",
 	},
 }
 
