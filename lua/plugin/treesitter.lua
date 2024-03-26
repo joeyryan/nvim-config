@@ -55,11 +55,6 @@ function M.config()
 
 		autotag = { enable = true },
 
-		context_commentstring = {
-			enable = true,
-			enable_autocmd = false,
-		},
-
 		autopairs = { enable = true },
 
 		textobjects = {
@@ -94,6 +89,10 @@ function M.config()
 				},
 			},
 		},
+	})
+
+	require("ts_context_commentstring").setup({
+		enable_autocmd = false,
 	})
 end
 
