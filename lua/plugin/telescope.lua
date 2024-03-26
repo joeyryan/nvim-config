@@ -82,6 +82,7 @@ function M.config()
 				theme = "dropdown",
 				previewer = true,
 				initial_mode = "normal",
+				sort_mru = true, -- sort buffers by most recently used (mru)
 				mappings = {
 					i = {
 						["<C-d>"] = actions.delete_buffer,
