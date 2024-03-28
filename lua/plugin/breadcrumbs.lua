@@ -1,4 +1,4 @@
--- works with nvim-navic to provide context about your code in the winbar
+-- Works with nvim-navic to provide code context in the winbar
 
 local M = {
 	"LunarVim/breadcrumbs.nvim",
