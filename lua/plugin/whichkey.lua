@@ -80,11 +80,11 @@ function M.config()
 			},
 		},
 
-		l = {
-			name = "LSP",
+		a = {
+			name = "Action",
 			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 			-- d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
-			w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
+			-- w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
 			f = { "<cmd>lua vim.lsp.buf.format({timeout_ms = 1000000})<cr>", "Format" },
 			-- i = { "<cmd>LspInfo<cr>", "Info" },
 			-- I = { "<cmd>Mason<cr>", "Mason Info" },
@@ -100,8 +100,8 @@ function M.config()
 			-- e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
 		},
 
-		s = {
-			name = "Show (LSP)",
+		l = {
+			name = "LSP",
 			r = { "<cmd>Telescope lsp_references<cr>", "References" },
 			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 			w = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
@@ -146,8 +146,8 @@ function M.config()
 	-- see https://neovim.io/doc/user/map.html#:map-cmd
 	local vmappings = {
 		["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" },
-		l = {
-			name = "LSP",
+		a = {
+			name = "Action",
 			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
 		},
 	}

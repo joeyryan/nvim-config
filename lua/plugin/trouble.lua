@@ -7,6 +7,7 @@ local M = {
 }
 
 function M.config()
+	local icons = require("core.icons")
 	require("trouble").setup({
 		position = "bottom", -- position of the list can be: bottom, top, left, right
 		height = 15, -- height of the trouble list when position is top or bottom
@@ -31,7 +32,7 @@ function M.config()
 			open_tab = { "<c-t>" }, -- open buffer in new tab
 			jump_close = { "o" }, -- jump to the diagnostic and close the list
 			toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
-			switch_severity = "s", -- switch "diagnostics" severity filter level to HINT / INFO / WARN / ERROR
+			switch_severity = "f", -- switch "diagnostics" severity filter level to HINT / INFO / WARN / ERROR
 			toggle_preview = "P", -- toggle auto_preview
 			hover = "K", -- opens a small popup with the full multiline message
 			preview = "p", -- preview the diagnostic location
@@ -54,10 +55,10 @@ function M.config()
 		include_declaration = { "lsp_references", "lsp_implementations", "lsp_definitions" }, -- for the given modes, include the declaration of the current symbol in the results
 		signs = {
 			-- icons / text used for a diagnostic
-			error = "",
-			warning = "",
-			hint = "",
-			information = "",
+			error = icons.diagnostics.Error,
+			warning = icons.diagnostics.Warning,
+			hint = icons.diagnostics.Hint,
+			information = icons.diagnostics.Information,
 			other = "",
 		},
 		use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
