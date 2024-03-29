@@ -38,7 +38,6 @@ function M.config()
 		f = {
 			name = "Find",
 			b = { "<cmd>Telescope buffers previewer=false<cr>", "Find Buffer" },
-			-- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 			-- c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 			f = { "<cmd>Telescope find_files<cr>", "Find Files" },
 			p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
@@ -84,38 +83,31 @@ function M.config()
 		l = {
 			name = "LSP",
 			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-			d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
+			-- d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
 			w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
 			f = { "<cmd>lua vim.lsp.buf.format({timeout_ms = 1000000})<cr>", "Format" },
 			-- i = { "<cmd>LspInfo<cr>", "Info" },
 			-- I = { "<cmd>Mason<cr>", "Mason Info" },
-			j = {
-				"<cmd>lua vim.diagnostic.goto_next()<cr>",
-				"Next Diagnostic",
-			},
-			k = {
-				"<cmd>lua vim.diagnostic.goto_prev()<cr>",
-				"Prev Diagnostic",
-			},
+
 			l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-			q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
+			-- q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
 			r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 			-- s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
 			-- S = {
 			-- 	"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
 			-- 	"Workspace Symbols",
 			-- },
-			e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
+			-- e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
 		},
 
 		s = {
 			name = "Show (LSP)",
-			r = { "<cmd>Telescope lsp_references<cr>", "LSP References" },
-			s = { "<cmd>Telescope lsp_document_symbols<cr>", "LSP Document Symbols" },
-			w = { "<cmd>Telescope lsp_workspace_symbols<cr>", "LSP Workspace Symbols" },
-			i = { "<cmd>Telescope lsp_implementations<cr>", "LSP Implementations" },
-			d = { "<cmd>Telescope lsp_definitions<cr>", "LSP Definitions" },
-			t = { "<cmd>Telescope lsp_type_definitions<cr>", "LSP Type Definitions" },
+			r = { "<cmd>Telescope lsp_references<cr>", "References" },
+			s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+			w = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
+			i = { "<cmd>Telescope lsp_implementations<cr>", "Implementations" },
+			d = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
+			t = { "<cmd>Telescope lsp_type_definitions<cr>", "Type Definitions" },
 			-- r = { "<cmd>lua require('trouble').toggle('lsp_references')<cr>", "LSP References" },
 			-- i = { "<cmd>lua require('trouble').toggle('lsp_implementations')<cr>", "LSP Implementations" },
 			-- d = { "<cmd>lua require('trouble').toggle('lsp_definitions')<cr>", "LSP Definitions" },
@@ -130,6 +122,14 @@ function M.config()
 			d = { "<cmd>lua require('trouble').toggle('document_diagnostics')<cr>", "Document Diagnostics" },
 			q = { "<cmd>lua require('trouble').toggle('quickfix')<cr>", "Quickfix" },
 			l = { "<cmd>lua require('trouble').toggle('loclist')<cr>", "Loclist" },
+			j = {
+				"<cmd>lua vim.diagnostic.goto_next()<cr>",
+				"Next Diagnostic",
+			},
+			k = {
+				"<cmd>lua vim.diagnostic.goto_prev()<cr>",
+				"Prev Diagnostic",
+			},
 		},
 	}
 
@@ -166,7 +166,7 @@ function M.config()
 	which_key.setup({
 		plugins = {
 			marks = false, -- shows a list of your marks on ' and `
-			registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+			registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
 			spelling = {
 				enabled = true,
 				suggestions = 20,
