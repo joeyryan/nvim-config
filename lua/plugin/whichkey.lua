@@ -12,7 +12,8 @@ function M.config()
     ["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
     ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
     ["e"] = { "<cmd>NvimTreeFocus<CR>", "Explorer" },
-
+    ["o"] = { "<cmd>AerialToggle!<CR>", "Aerial" },
+    ["n"] = { "<cmd>enew<cr>", "New File" },
     b = {
       name = "Buffers",
     },

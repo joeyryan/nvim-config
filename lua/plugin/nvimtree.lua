@@ -27,6 +27,9 @@ function M.config()
   require("nvim-tree").setup({
     on_attach = my_on_attach,
     sync_root_with_cwd = true,
+    view = {
+      width = 32,
+    },
     renderer = {
       add_trailing = false,
       group_empty = true,
@@ -94,10 +97,10 @@ function M.config()
         max = vim.diagnostic.severity.ERROR,
       },
       icons = {
-        hint = icons.diagnostics.BoldHint,
-        info = icons.diagnostics.BoldInformation,
-        warning = icons.diagnostics.BoldWarning,
-        error = icons.diagnostics.BoldError,
+        hint = icons.diagnostics.Hint,
+        info = icons.diagnostics.Information,
+        warning = icons.diagnostics.Warning,
+        error = icons.diagnostics.Error,
       },
     },
   })

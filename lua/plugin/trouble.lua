@@ -28,7 +28,7 @@ function M.config()
       refresh = "r", -- manually refresh
       jump = { "<cr>", "<tab>", "<2-leftmouse>" }, -- jump to the diagnostic or open / close folds
       open_split = { "<c-x>" }, -- open buffer in new split
-      open_vsplit = { "<c-v>" }, -- open buffer in new vsplit
+      open_vsplit = { "<c-\\>" }, -- open buffer in new vsplit
       open_tab = { "<c-t>" }, -- open buffer in new tab
       jump_close = { "o" }, -- jump to the diagnostic and close the list
       toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
@@ -53,15 +53,15 @@ function M.config()
     auto_fold = false, -- automatically fold a file trouble list at creation
     auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
     include_declaration = { "lsp_references", "lsp_implementations", "lsp_definitions" }, -- for the given modes, include the declaration of the current symbol in the results
-    signs = {
-      -- icons / text used for a diagnostic
-      error = icons.diagnostics.Error,
-      warning = icons.diagnostics.Warning,
-      hint = icons.diagnostics.Hint,
-      information = icons.diagnostics.Information,
-      other = "",
-    },
-    use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
+    -- signs = {
+    --   -- icons / text used for a diagnostic
+    --   error = icons.diagnostics.Error,
+    --   warning = icons.diagnostics.Warning,
+    --   hint = icons.diagnostics.Hint,
+    --   information = icons.diagnostics.Information,
+    --   other = "",
+    -- },
+    use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
   })
 
   -- 	local trouble = require("trouble")
