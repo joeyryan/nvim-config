@@ -1,6 +1,6 @@
 -- Icons that are used in other plugins
 return {
-	types = {
+	kind = {
 		Array = " ",
 		Boolean = " ",
 		Class = " ",

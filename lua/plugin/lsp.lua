@@ -47,9 +47,13 @@ function M.on_attach(client, bufnr)
 	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	-- keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	-- keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+
+	-- Modified gi and gr to use Trouble, which is a nicer list view than quickfix
+	keymap(bufnr, "n", "gi", "<cmd>lua require('trouble').toggle('lsp_implementations')<cr>", opts)
+	keymap(bufnr, "n", "gr", "<cmd>lua require('trouble').toggle('lsp_references')<cr>", opts)
 end
 
 function M.common_capabilities()
