@@ -97,10 +97,10 @@ function M.config()
         max = vim.diagnostic.severity.ERROR,
       },
       icons = {
-        hint = icons.diagnostics.Hint,
-        info = icons.diagnostics.Information,
-        warning = icons.diagnostics.Warning,
-        error = icons.diagnostics.Error,
+        hint = icons.diagnostics.BoldHint,
+        info = icons.diagnostics.BoldInformation,
+        warning = icons.diagnostics.BoldWarning,
+        error = icons.diagnostics.BoldError,
       },
     },
   })

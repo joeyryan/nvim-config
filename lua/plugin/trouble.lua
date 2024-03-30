@@ -1,6 +1,7 @@
 -- Project management support that integrates with Telescope
 local M = {
   "folke/trouble.nvim",
+  event = "VeryLazy",
   dependencies = {
     { "nvim-cmp" },
   },

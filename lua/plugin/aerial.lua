@@ -1,4 +1,5 @@
 local M = {
+  -- Aerial is a symbol outline navigation tool
   "stevearc/aerial.nvim",
   opts = {},
   -- Optional dependencies

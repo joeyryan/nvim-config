@@ -89,10 +89,6 @@ function M.config()
           },
         },
       },
-      planets = {
-        show_pluto = true,
-        show_moon = true,
-      },
       colorscheme = {
         enable_preview = true,
       },

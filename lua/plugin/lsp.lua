@@ -18,6 +18,9 @@ local M = {
     {
       "b0o/schemastore.nvim",
     },
+    -- {
+    --   "ray-x/lsp_signature.nvim",
+    -- },
   },
 }
 
@@ -93,10 +96,10 @@ function M.config()
     signs = {
       active = true,
       values = {
-        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+        { name = "DiagnosticSignError", text = icons.diagnostics.BoldError },
+        { name = "DiagnosticSignWarn", text = icons.diagnostics.BoldWarning },
+        { name = "DiagnosticSignHint", text = icons.diagnostics.BoldHint },
+        { name = "DiagnosticSignInfo", text = icons.diagnostics.BoldInformation },
       },
     },
     virtual_text = true,
@@ -143,6 +146,8 @@ function M.config()
 
     lspconfig[server].setup(opts)
   end
+
+  -- require("lsp_signature").setup()
 end
 
 return M
