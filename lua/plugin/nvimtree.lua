@@ -30,6 +30,7 @@ function M.config()
     view = {
       width = 32,
     },
+    filters = { custom = { "^.git$" } },
     renderer = {
       add_trailing = false,
       group_empty = true,
@@ -37,7 +38,7 @@ function M.config()
       full_name = false,
       highlight_opened_files = "none",
       root_folder_label = ":t",
-      indent_width = 1,
+      indent_width = 2,
       indent_markers = {
         enable = true,
         inline_arrows = true,
@@ -51,7 +52,7 @@ function M.config()
       icons = {
         git_placement = "before",
         padding = " ",
-        symlink_arrow = " ➛ ",
+        symlink_arrow = icons.ui.SymlinkArrow,
         glyphs = {
           default = icons.ui.Text,
           symlink = icons.ui.FileSymlink,

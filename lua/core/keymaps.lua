@@ -29,6 +29,7 @@ keymap("n", "U", "<C-R>")
 
 -- better copy and paste...
 keymap("v", "<leader>y", '"+y')
+keymap("n", "<leader>y", '"+y')
 keymap("n", "<leader>p", '"+p')
 
 -- Move between window panes with CTRL+H/J/K/L

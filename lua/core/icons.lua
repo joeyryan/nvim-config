@@ -117,6 +117,7 @@ return {
     Search = " ",
     SignIn = " ",
     SignOut = " ",
+    SymlinkArrow = " ➛ ",
     Tab = "󰌒 ",
     Table = " ",
     Target = "󰀘 ",
