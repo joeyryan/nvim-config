@@ -19,12 +19,14 @@ function M.config()
       markdown = { "prettier" },
       graphql = { "prettier" },
       lua = { "stylua" },
+      sh = { "shfmt" },
     },
     format_on_save = {
       -- These options will be passed to conform.format()
       timeout_ms = 2000,
       lsp_fallback = true,
       async = false,
+      quiet = false,
     },
   })
   --vim.api.nvim_create_autocmd("BufWritePre", {
@@ -33,6 +35,12 @@ function M.config()
   --		require("conform").format({ bufnr = args.buf })
   --	end,
   --})
+
+  require("conform").formatters.shfmt = {
+    prepend_args = { "-i", "2" },
+    -- The base args are { "-filename", "$FILENAME" } so the final args will be
+    -- { "-i", "2", "-filename", "$FILENAME" }
+  }
 end
 
 return M
