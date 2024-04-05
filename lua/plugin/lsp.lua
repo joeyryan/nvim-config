@@ -102,9 +102,9 @@ function M.config()
         { name = "DiagnosticSignInfo", text = icons.diagnostics.BoldInformation },
       },
     },
-    virtual_text = true,
+    virtual_text = false,
     update_in_insert = false,
-    underline = false,
+    underline = true,
     severity_sort = true,
     float = {
       focusable = true,
