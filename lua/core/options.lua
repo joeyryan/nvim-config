@@ -36,12 +36,12 @@ vim.opt.wrap = true -- display lines as one long line
 vim.opt.scrolloff = 1
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
-vim.opt.title = false
+-- vim.opt.title = false -- dont think this does anything
 -- colorcolumn = "80",
 -- colorcolumn = "120",
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append({
-	stl = " ",
+  stl = " ",
 })
 
 vim.opt.shortmess:append("c")

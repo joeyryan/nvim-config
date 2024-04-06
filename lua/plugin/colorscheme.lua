@@ -42,7 +42,7 @@ function M.config()
       },
       treesitter = true,
       gitsigns = true,
-      fidget = true,
+      -- fidget = true,
       bufferline = true,
       -- dap = true,
       -- dap_ui = true,
