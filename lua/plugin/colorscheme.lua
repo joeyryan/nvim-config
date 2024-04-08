@@ -56,7 +56,21 @@ function M.config()
         TabLine = { fg = "#d6e0ff", bg = "#cccccc" },
       },
     },
-    highlight_overrides = {},
+    highlight_overrides = {
+      all = function(colors)
+        return {
+          NvimTreeFolderArrowOpen = {
+            fg = "#b4bdfa",
+          },
+          NvimTreeFolderArrowClosed = {
+            fg = "#b4bdfa",
+          },
+          NvimTreeIndentMarker = {
+            fg = "#45475a",
+          },
+        }
+      end,
+    },
   })
   vim.cmd.colorscheme("catppuccin")
 end
