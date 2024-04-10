@@ -13,8 +13,8 @@ function M.config()
 
   telescope.setup({
     defaults = {
-      prompt_prefix = icons.ui.Search .. " ",
-      selection_caret = icons.ui.Forward .. " ",
+      prompt_prefix = icons.telescope.Search,
+      selection_caret = icons.telescope.Forward,
       entry_prefix = "   ",
       initial_mode = "insert",
       selection_strategy = "reset",
@@ -65,20 +65,52 @@ function M.config()
     pickers = {
       live_grep = {
         -- theme = "dropdown",
-        prompt_prefix = icons.ui.FindText,
+        prompt_prefix = icons.telescope.FindText,
       },
 
       grep_string = {
         -- theme = "dropdown",
-        prompt_prefix = icons.ui.FindText,
+        prompt_prefix = icons.telescope.FindText,
       },
 
       find_files = {
         -- theme = "dropdown",
         -- previewer = true,
-        prompt_prefix = icons.ui.FindFile,
+        prompt_prefix = icons.telescope.FindFile,
       },
-
+      treesitter = {
+        prompt_prefix = icons.telescope.Code,
+      },
+      lsp_type_definitions = {
+        prompt_prefix = icons.telescope.Type,
+        theme = "dropdown",
+        initial_mode = "normal",
+      },
+      lsp_definitions = {
+        prompt_prefix = icons.telescope.Code,
+        theme = "dropdown",
+        initial_mode = "normal",
+      },
+      lsp_references = {
+        prompt_prefix = icons.telescope.Reference,
+        theme = "dropdown",
+        initial_mode = "normal",
+      },
+      lsp_implementations = {
+        prompt_prefix = icons.telescope.Implementation,
+        theme = "dropdown",
+        initial_mode = "normal",
+      },
+      lsp_document_symbols = {
+        prompt_prefix = icons.telescope.Symbols,
+        theme = "dropdown",
+        initial_mode = "normal",
+      },
+      lsp_workspace_symbols = {
+        prompt_prefix = icons.telescope.Symbols,
+        theme = "dropdown",
+        initial_mode = "normal",
+      },
       buffers = {
         theme = "dropdown",
         previewer = true,
@@ -96,25 +128,6 @@ function M.config()
       colorscheme = {
         enable_preview = true,
       },
-      -- lsp_references = {
-      --   theme = "dropdown",
-      --   initial_mode = "normal",
-      -- },
-
-      -- lsp_definitions = {
-      --   theme = "dropdown",
-      --   initial_mode = "normal",
-      -- },
-
-      -- lsp_declarations = {
-      --   theme = "dropdown",
-      --   initial_mode = "normal",
-      -- },
-
-      -- lsp_implementations = {
-      --   theme = "dropdown",
-      --   initial_mode = "normal",
-      -- },
     },
     file_ignore_patterns = { "node_modules" },
     -- file_sorter = require("telescope.sorters").get_fuzzy_file,
