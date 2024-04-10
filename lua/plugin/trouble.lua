@@ -19,7 +19,7 @@ function M.config()
     fold_open = icons.ui.ChevronDown, -- icon used for open folds
     fold_closed = icons.ui.ChevronRight, -- icon used for closed folds
     group = true, -- group results by file
-    padding = true, -- add an extra new line on top of the list
+    padding = false, -- add an extra new line on top of the list
     cycle_results = true, -- cycle item list when reaching beginning or end of list
     action_keys = { -- key mappings for actions in the trouble list
       -- map to {} to remove a mapping, for example:
