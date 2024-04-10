@@ -59,7 +59,7 @@ function M.config()
           bookmark = icons.ui.BookMark,
           folder = {
             arrow_closed = icons.ui.ChevronRight,
-            arrow_open = icons.ui.ChevronShortDown,
+            arrow_open = icons.ui.ChevronDown,
             default = icons.ui.Folder,
             open = icons.ui.FolderOpen,
             empty = icons.ui.EmptyFolder,

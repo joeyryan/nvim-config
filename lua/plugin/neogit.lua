@@ -31,8 +31,8 @@ function M.config()
     -- customize displayed signs
     signs = {
       -- { CLOSED, OPENED }
-      section = { icons.ui.ChevronRight, icons.ui.ChevronShortDown },
-      item = { icons.ui.ChevronRight, icons.ui.ChevronShortDown },
+      section = { icons.ui.ChevronRight, icons.ui.ChevronDown },
+      item = { icons.ui.ChevronRight, icons.ui.ChevronDown },
       hunk = { "", "" },
     },
     integrations = {

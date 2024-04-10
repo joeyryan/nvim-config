@@ -16,8 +16,8 @@ function M.config()
     icons = true, -- use devicons for filenames
     mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
     severity = nil, -- nil (ALL) or vim.diagnostic.severity.ERROR | WARN | INFO | HINT
-    fold_open = "", -- icon used for open folds
-    fold_closed = "", -- icon used for closed folds
+    fold_open = icons.ui.ChevronDown, -- icon used for open folds
+    fold_closed = icons.ui.ChevronRight, -- icon used for closed folds
     group = true, -- group results by file
     padding = true, -- add an extra new line on top of the list
     cycle_results = true, -- cycle item list when reaching beginning or end of list
@@ -54,14 +54,6 @@ function M.config()
     auto_fold = false, -- automatically fold a file trouble list at creation
     auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
     include_declaration = { "lsp_references", "lsp_implementations", "lsp_definitions" }, -- for the given modes, include the declaration of the current symbol in the results
-    -- signs = {
-    --   -- icons / text used for a diagnostic
-    --   error = icons.diagnostics.Error,
-    --   warning = icons.diagnostics.Warning,
-    --   hint = icons.diagnostics.Hint,
-    --   information = icons.diagnostics.Information,
-    --   other = "",
-    -- },
     use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
   })
 

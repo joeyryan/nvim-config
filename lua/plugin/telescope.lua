@@ -13,7 +13,7 @@ function M.config()
 
   telescope.setup({
     defaults = {
-      prompt_prefix = icons.ui.Telescope .. " ",
+      prompt_prefix = icons.ui.Search .. " ",
       selection_caret = icons.ui.Forward .. " ",
       entry_prefix = "   ",
       initial_mode = "insert",
@@ -63,18 +63,22 @@ function M.config()
       },
     },
     pickers = {
-      -- live_grep = {
-      --   theme = "dropdown",
-      -- },
+      live_grep = {
+        -- theme = "dropdown",
+        prompt_prefix = icons.ui.FindText,
+      },
 
-      -- grep_string = {
-      --   theme = "dropdown",
-      -- },
+      grep_string = {
+        -- theme = "dropdown",
+        prompt_prefix = icons.ui.FindText,
+      },
 
-      -- find_files = {
-      --   theme = "dropdown",
-      --   previewer = true,
-      -- },
+      find_files = {
+        -- theme = "dropdown",
+        -- previewer = true,
+        prompt_prefix = icons.ui.FindFile,
+      },
+
       buffers = {
         theme = "dropdown",
         previewer = true,
