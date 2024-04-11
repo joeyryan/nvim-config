@@ -38,14 +38,14 @@ return {
   },
   telescope = {
     Forward = "  ",
-    Code = "  ",
-    Reference = "  ",
-    Type = "  ",
-    FindFile = "󰈞  ",
-    Search = "  ",
-    FindText = "󰊄  ",
-    Implementation = "  ",
-    Symbols = "󱔁  ",
+    Code = "   ",
+    Reference = "   ",
+    Type = "   ",
+    FindFile = " 󰱼  ",
+    Search = "   ",
+    FindText = " 󰊄  ",
+    Implementation = "   ",
+    Symbols = "   ",
   },
   git = {
 
