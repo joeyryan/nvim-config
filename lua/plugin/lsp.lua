@@ -7,20 +7,14 @@ local M = {
       "folke/neodev.nvim",
     },
     {
-      "williamboman/mason-lspconfig.nvim",
-    },
-    {
-      "williamboman/mason.nvim",
-    },
-    {
       "nvim-lua/plenary.nvim",
     },
     {
       "b0o/schemastore.nvim",
     },
-    -- {
-    --   "ray-x/lsp_signature.nvim",
-    -- },
+    {
+      "ray-x/lsp_signature.nvim",
+    },
   },
 }
 
@@ -80,15 +74,6 @@ function M.common_capabilities()
 end
 
 function M.config()
-  require("mason").setup({
-    ui = {
-      border = "rounded",
-    },
-  })
-  require("mason-lspconfig").setup({
-    ensure_installed = M.servers,
-  })
-
   local lspconfig = require("lspconfig")
   local icons = require("core.icons")
 
@@ -147,7 +132,7 @@ function M.config()
     lspconfig[server].setup(opts)
   end
 
-  -- require("lsp_signature").setup()
+  require("lsp_signature").setup()
 end
 
 return M

@@ -16,6 +16,7 @@ else
   spec("plugin.bufferline")
   spec("plugin.treesitter")
   -- spec("plugin.schemastore")
+  spec("plugin.mason")
   spec("plugin.lsp")
   spec("plugin.typescript-tools")
   spec("plugin.breadcrumbs")
