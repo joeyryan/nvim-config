@@ -40,6 +40,7 @@ else
   spec("plugin.bufdelete")
   spec("plugin.conform")
   -- spec "plugin.dapui"
+  spec("plugin.fidget")
   spec("plugin.whichkey")
   require("plugin.lazy")
 end
