@@ -7,6 +7,7 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
     "nvim-tree/nvim-web-devicons",
   },
+  event = "VeryLazy",
 }
 
 function M.config()
@@ -90,7 +91,7 @@ function M.config()
     },
     -- Don't load aerial until a command or function is called
     -- Defaults to true, unless `on_attach` is provided, then it defaults to false
-    lazy_load = true,
+    lazy_load = false,
     -- Disable aerial on files with this many lines
     disable_max_lines = 10000,
     -- Disable aerial on files this size or larger (in bytes)

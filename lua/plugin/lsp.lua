@@ -69,8 +69,6 @@ function M.common_capabilities()
       "additionalTextEdits",
     },
   }
-
-  return capabilities
 end
 
 function M.config()
@@ -124,7 +122,7 @@ function M.config()
       opts = vim.tbl_deep_extend("force", settings, opts)
     end
 
-    -- neodev is a lua specific plugin
+    -- neodev is a lua specific plugin that loads neovim documentation into the lsp
     if server == "lua_ls" then
       require("neodev").setup({})
     end

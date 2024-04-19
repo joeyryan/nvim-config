@@ -72,7 +72,6 @@ function M.config()
         -- theme = "dropdown",
         prompt_prefix = icons.telescope.FindText,
       },
-
       find_files = {
         -- theme = "dropdown",
         -- previewer = true,
