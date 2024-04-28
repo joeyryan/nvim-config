@@ -52,8 +52,7 @@ function M.config()
     color_overrides = {
       all = {
         text = "#d6e0ff",
-        base = "#1d1d2d",
-        TabLine = { fg = "#d6e0ff", bg = "#cccccc" },
+        -- base = "#1d1d2d",
       },
     },
     highlight_overrides = {
