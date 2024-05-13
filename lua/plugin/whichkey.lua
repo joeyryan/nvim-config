@@ -42,7 +42,7 @@ function M.config()
       f = { "<cmd>Telescope find_files<cr>", "Find Files" },
       p = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
       t = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-      s = { "<cmd>Telescope grep_string<cr>", "Find String" },
+      w = { "<cmd>Telescope grep_string<cr>", "Find Word" },
       h = { "<cmd>Telescope help_tags<cr>", "Help" },
       H = { "<cmd>Telescope highlights<cr>", "Highlights" },
       l = { "<cmd>Telescope resume<cr>", "Last Search" },
@@ -118,7 +118,7 @@ function M.config()
     ["\\"] = {
       name = "Settings",
       c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-      l = { "<cmd>LspInfo<cr>", "Info" },
+      l = { "<cmd>LspInfo<cr>", "LSP Info" },
       m = { "<cmd>Mason<cr>", "Mason Info" },
     },
   }
@@ -135,7 +135,14 @@ function M.config()
   -- NOTE: Prefer using : over <cmd> as the latter avoids going back in normal-mode.
   -- see https://neovim.io/doc/user/map.html#:map-cmd
   local vmappings = {
+    ["q"] = { "<cmd>confirm qa<CR>", "Quit" },
+    ["c"] = { ":lua require('bufdelete').bufdelete(0, false)<cr>", "Close" },
+    ["w"] = { "<cmd>w<CR>", "Save" },
     ["/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment toggle linewise (visual)" },
+    ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+    ["e"] = { "<cmd>NvimTreeFocus<CR>", "Explorer" },
+    ["o"] = { "<cmd>AerialToggle!<CR>", "Aerial" },
+    ["n"] = { "<cmd>enew<cr>", "New File" },
     a = {
       name = "Action",
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },

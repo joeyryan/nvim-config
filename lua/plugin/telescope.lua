@@ -82,36 +82,39 @@ function M.config()
       },
       lsp_type_definitions = {
         prompt_prefix = icons.telescope.Type,
-        theme = "dropdown",
+        -- theme = "dropdown",
         initial_mode = "normal",
       },
       lsp_definitions = {
         prompt_prefix = icons.telescope.Code,
-        theme = "dropdown",
+        -- theme = "dropdown",
         initial_mode = "normal",
       },
       lsp_references = {
         prompt_prefix = icons.telescope.Reference,
-        theme = "dropdown",
+        -- theme = "dropdown",
         initial_mode = "normal",
       },
       lsp_implementations = {
         prompt_prefix = icons.telescope.Implementation,
-        theme = "dropdown",
+        -- theme = "dropdown",
         initial_mode = "normal",
       },
       lsp_document_symbols = {
         prompt_prefix = icons.telescope.Symbols,
-        theme = "dropdown",
+        -- theme = "dropdown",
         initial_mode = "normal",
       },
       lsp_workspace_symbols = {
         prompt_prefix = icons.telescope.Symbols,
-        theme = "dropdown",
+        -- theme = "dropdown",
         initial_mode = "normal",
       },
       buffers = {
         theme = "dropdown",
+        layout_config = {
+          height = 25,
+        },
         previewer = true,
         initial_mode = "normal",
         sort_mru = true, -- sort buffers by most recently used (mru)
