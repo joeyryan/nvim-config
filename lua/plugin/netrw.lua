@@ -10,7 +10,6 @@ function M.config()
     icons = {
       symlink = icons.ui.Forward,
       directory = icons.ui.FolderOpen,
-      -- file = " ",
       file = icons.ui.File,
     },
     use_devicons = true,
