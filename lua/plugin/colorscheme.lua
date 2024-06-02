@@ -66,8 +66,6 @@ function M.config()
           },
           NvimTreeIndentMarker = {
             fg = "#45475a",
-            -- fg = "#b4bdfa",
-            -- fg = "#313244",
           },
         }
       end,

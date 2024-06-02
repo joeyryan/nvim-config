@@ -30,13 +30,6 @@ function M.config()
       quiet = false,
     },
   })
-  --vim.api.nvim_create_autocmd("BufWritePre", {
-  --	pattern = "*",
-  --	callback = function(args)
-  --		require("conform").format({ bufnr = args.buf })
-  --	end,
-  --})
-
   require("conform").formatters.shfmt = {
     prepend_args = { "-i", "2" },
     -- The base args are { "-filename", "$FILENAME" } so the final args will be
