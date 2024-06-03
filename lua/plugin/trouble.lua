@@ -56,26 +56,6 @@ function M.config()
     include_declaration = { "lsp_references", "lsp_implementations", "lsp_definitions" }, -- for the given modes, include the declaration of the current symbol in the results
     use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
   })
-
-  -- 	local trouble = require("trouble")
-  -- 	vim.keymap.set("n", "<leader>tt", function()
-  -- 		trouble.toggle()
-  -- 	end)
-  -- 	vim.keymap.set("n", "<leader>tw", function()
-  -- 		trouble.toggle("workspace_diagnostics")
-  -- 	end)
-  -- vim.keymap.set("n", "<leader>td", function()
-  -- 		trouble.toggle("document_diagnostics")
-  -- 	end)
-  -- 	vim.keymap.set("n", "<leader>tq", function()
-  -- 		trouble.toggle("quickfix")
-  -- 	end)
-  -- 	vim.keymap.set("n", "<leader>tl", function()
-  -- 		trouble.toggle("loclist")
-  -- 	end)
-  -- 	vim.keymap.set("n", "tr", function()
-  -- 		trouble.toggle("lsp_references")
-  -- 	end)
 end
 
 return M
