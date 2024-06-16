@@ -4,7 +4,7 @@ local M = {
   opts = {},
 }
 
-function M.on_attach() end
+-- function M.on_attach() end
 
 function M.config()
   require("typescript-tools").setup({

@@ -154,6 +154,10 @@ function M.config()
       { name = "emoji" },
       { name = "treesitter" },
       { name = "tmux" },
+      {
+        name = "lazydev",
+        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+      },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
