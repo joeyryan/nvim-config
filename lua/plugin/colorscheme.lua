@@ -67,6 +67,12 @@ function M.config()
           NvimTreeIndentMarker = {
             fg = "#45475a",
           },
+          TroubleIndentFoldOpen = {
+            fg = "#b4bdfa",
+          },
+          TroubleIndentFoldClosed = {
+            fg = "#b4bdfa",
+          },
         }
       end,
     },
