@@ -32,13 +32,13 @@ keymap("v", "<leader>y", '"+y')
 keymap("n", "<leader>y", '"+y')
 keymap("n", "<leader>p", '"+p')
 
--- Stop overwriting my primary register. Use 'z' register instead
-keymap("n", "d", '"_d', opts)
-keymap("v", "d", '"_d', opts)
-keymap("n", "x", '"_x', opts)
-keymap("v", "x", '"_x', opts)
-keymap("n", "c", '"_c', opts)
-keymap("v", "c", '"_c', opts)
+-- -- Stop overwriting my primary register. Use 'z' register instead
+-- keymap("n", "d", '"_d', opts)
+-- keymap("v", "d", '"_d', opts)
+-- keymap("n", "x", '"_x', opts)
+-- keymap("v", "x", '"_x', opts)
+-- keymap("n", "c", '"_c', opts)
+-- keymap("v", "c", '"_c', opts)
 
 -- Move between window panes with CTRL+H/J/K/L
 keymap("n", "<m-h>", "<C-w>h", opts)

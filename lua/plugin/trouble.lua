@@ -16,7 +16,7 @@ function M.config()
       auto_preview = true, -- automatically open preview when on an item
       auto_refresh = true, -- auto refresh when open
       auto_jump = false, -- auto jump to the item when there's only one
-      focus = false, -- Focus the window when opened
+      focus = true, -- Focus the window when opened
       restore = true, -- restores the last location in the list when opening
       follow = true, -- Follow the current item
       indent_guides = true, -- show indent guides
@@ -57,8 +57,8 @@ function M.config()
         ["<esc>"] = "cancel",
         ["<cr>"] = "jump",
         ["<2-leftmouse>"] = "jump",
-        ["<c-s>"] = "jump_split",
-        ["<c-v>"] = "jump_vsplit",
+        ["<c-h>"] = "jump_split",
+        ["<c-\\>"] = "jump_vsplit",
         -- go down to next item (accepts count)
         -- j = "next",
         ["}"] = "next",
