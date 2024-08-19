@@ -7,7 +7,7 @@ local M = {
 function M.config()
   require("catppuccin").setup({
     lazy = false,
-    flavor = "mocha",
+    flavour = "macchiato",
     transparent_background = false,
     -- term_colors = false,
     compile = {
@@ -51,7 +51,7 @@ function M.config()
     },
     color_overrides = {
       all = {
-        text = "#d6e0ff",
+        text = "#d8e0ff",
         -- base = "#1d1d2d",
       },
     },

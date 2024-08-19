@@ -33,7 +33,7 @@ M.servers = {
   "yamlls",
   "marksman",
   "tailwindcss",
-  "csharp_ls",
+  -- "csharp_ls",
   "eslint",
   "angularls",
   "omnisharp",

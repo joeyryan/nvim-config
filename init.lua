@@ -42,5 +42,6 @@ else
   -- spec "plugin.dapui"
   spec("plugin.fidget")
   spec("plugin.whichkey")
+  spec("plugin.vimtex")
   require("plugin.lazy")
 end
