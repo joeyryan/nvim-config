@@ -43,5 +43,6 @@ else
   spec("plugin.fidget")
   spec("plugin.whichkey")
   spec("plugin.vimtex")
+  -- spec("plugin.hardtime")
   require("plugin.lazy")
 end

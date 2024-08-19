@@ -1,6 +1,7 @@
 -- Shows a popup that displays keybinding definitions
 local M = {
   "folke/which-key.nvim",
+  commit="53b6085", 
   event = "VeryLazy",
 }
 
