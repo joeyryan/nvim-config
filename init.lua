@@ -30,7 +30,7 @@ else
   spec("plugin.cmp")
   spec("plugin.comment")
   spec("plugin.gitsigns")
-  spec("plugin.neogit")
+  -- spec("plugin.neogit")
   spec("plugin.diffview")
   spec("plugin.indentline")
   spec("plugin.alpha")
