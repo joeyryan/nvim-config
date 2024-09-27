@@ -132,7 +132,9 @@ function M.config()
     lspconfig[server].setup(opts)
   end
 
-  require("lsp_signature").setup()
+  require("lsp_signature").setup({
+    zindex = 20
+  })
 end
 
 return M
