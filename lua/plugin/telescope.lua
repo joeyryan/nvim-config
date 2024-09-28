@@ -61,6 +61,7 @@ function M.config()
           ["q"] = actions.close,
         },
       },
+    file_ignore_patterns = { "node_modules" },
     },
     pickers = {
       live_grep = {
@@ -131,7 +132,6 @@ function M.config()
         enable_preview = true,
       },
     },
-    file_ignore_patterns = { "node_modules" },
     -- file_sorter = require("telescope.sorters").get_fuzzy_file,
     -- generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     -- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
