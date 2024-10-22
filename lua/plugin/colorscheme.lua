@@ -7,7 +7,7 @@ local M = {
 function M.config()
   require("catppuccin").setup({
     lazy = false,
-    flavour = "macchiato",
+    flavour = "mocha",
     transparent_background = false,
     -- term_colors = false,
     compile = {
