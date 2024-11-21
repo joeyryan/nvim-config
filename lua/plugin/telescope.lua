@@ -61,7 +61,7 @@ function M.config()
           ["q"] = actions.close,
         },
       },
-    file_ignore_patterns = { "node_modules" },
+    file_ignore_patterns = { ".git/", "node_modules/", "dist/" },
     },
     pickers = {
       live_grep = {
@@ -77,6 +77,7 @@ function M.config()
         -- theme = "dropdown",
         -- previewer = true,
         prompt_prefix = icons.telescope.FindFile,
+        -- hidden = true
       },
       treesitter = {
         prompt_prefix = icons.telescope.Code,
