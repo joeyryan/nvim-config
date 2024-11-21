@@ -23,13 +23,15 @@ function M.config()
       },
       delete = {
         -- hl = "GitSignsDelete",
-        text = icons.ui.Triangle,
+        -- text = icons.ui.Triangle,
+        text = icons.ui.BoldLineLeft,
         -- numhl = "GitSignsDeleteNr",
         -- linehl = "GitSignsDeleteLn",
       },
       topdelete = {
         -- hl = "GitSignsDelete",
-        text = icons.ui.Triangle,
+        -- text = icons.ui.Triangle,
+        text = icons.ui.BoldLineLeft,
         -- numhl = "GitSignsDeleteNr",
         -- linehl = "GitSignsDeleteLn",
       },

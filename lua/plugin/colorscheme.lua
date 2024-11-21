@@ -7,7 +7,8 @@ local M = {
 function M.config()
   require("catppuccin").setup({
     lazy = false,
-    flavour = "mocha",
+    -- flavour = "mocha",
+    flavour = "macchiato",
     transparent_background = false,
     -- term_colors = false,
     compile = {
@@ -15,7 +16,7 @@ function M.config()
       path = vim.fn.stdpath("cache") .. "/catppuccin",
     },
     dim_inactive = {
-      enabled = true,
+      enabled = false,
       shade = "dark",
       percentage = 0.15,
     },
