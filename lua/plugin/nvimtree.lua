@@ -50,7 +50,7 @@ function M.config()
         },
       },
       icons = {
-        git_placement = "before",
+        git_placement = "after",
         padding = " ",
         symlink_arrow = icons.ui.SymlinkArrow,
         glyphs = {
