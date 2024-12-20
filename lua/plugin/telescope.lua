@@ -151,6 +151,9 @@ function M.config()
   })
 
   telescope.load_extension("fzf")
+
+  local keymap = vim.api.nvim_set_keymap
+  keymap("n", "<leader><leader>", "<cmd> Telescope buffers<CR>", { desc = "Open list of buffers" })
 end
 
 return M
