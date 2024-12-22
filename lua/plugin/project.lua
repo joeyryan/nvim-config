@@ -12,7 +12,8 @@ function M.config()
     detection_methods = { "pattern", "lsp" },
     patterns = {
       ".git",
-      "package.json",
+      ">Projects",
+      -- "package.json",
       "Makefile",
     },
     ignore_lsp = {},

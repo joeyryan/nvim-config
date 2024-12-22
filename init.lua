@@ -13,7 +13,7 @@ if vim.g.vscode then
 else
   spec("plugin.colorscheme")
   spec("plugin.devicons")
-  spec("plugin.bufferline")
+  -- spec("plugin.bufferline")
   spec("plugin.treesitter")
   -- spec("plugin.schemastore")
   spec("plugin.mason")
@@ -42,8 +42,8 @@ else
   -- spec "plugin.dapui"
   spec("plugin.fidget")
   spec("plugin.whichkey")
-  spec("plugin.vimtex")
-  spec("plugin.harpoon")
+  -- spec("plugin.vimtex")
+  -- spec("plugin.harpoon")
   -- spec("plugin.hardtime")
   -- spec("plugin.bookmarks")
   require("plugin.lazy")
