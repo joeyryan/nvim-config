@@ -41,10 +41,10 @@ else
   spec("plugin.conform")
   -- spec "plugin.dapui"
   spec("plugin.fidget")
-  spec("plugin.whichkey")
-  -- spec("plugin.vimtex")
+  spec("plugin.vimtex")
   -- spec("plugin.harpoon")
   -- spec("plugin.hardtime")
   -- spec("plugin.bookmarks")
+  spec("plugin.whichkey")
   require("plugin.lazy")
 end
