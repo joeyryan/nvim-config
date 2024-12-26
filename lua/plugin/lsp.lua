@@ -134,9 +134,9 @@ function M.config()
 
   require("lsp_signature").setup({
     zindex = 20,
-          handler_opts = {
-        border = "single"
-      }
+    handler_opts = {
+      border = "single",
+    },
   })
 end
 
