@@ -28,7 +28,7 @@ function M.config()
     on_attach = my_on_attach,
     sync_root_with_cwd = true,
     view = {
-      width = 32,
+      width = 36,
     },
     filters = { custom = { "^.git$" } },
     renderer = {
