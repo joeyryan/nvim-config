@@ -5,6 +5,8 @@ local M = {
   version = "*",
 }
 
-function M.config() end
+function M.config()
+  vim.cmd("Copilot disable") -- Ensure Copilot is off by default
+end
 
 return M
