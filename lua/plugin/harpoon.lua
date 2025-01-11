@@ -1,11 +1,11 @@
 local M = {
-   "ThePrimeagen/harpoon",
-   dependencies = { "nvim-lua/plenary.nvim" },
-   opts = {}
+  "ThePrimeagen/harpoon",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {},
 }
 
 function M.config()
-  require("harpoon").setup({ 
+  require("harpoon").setup({
     -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
     save_on_toggle = false,
 
@@ -29,7 +29,38 @@ function M.config()
     tabline_prefix = "   ",
     tabline_suffix = "   ",
   })
-  require("telescope").load_extension('harpoon')
+  require("telescope").load_extension("harpoon")
+
+  -- Require Harpoon modules
+  local harpoon_mark = require("harpoon.mark")
+  local harpoon_ui = require("harpoon.ui")
+  local harpoon_term = require("harpoon.term")
+
+  -- Keymaps
+  vim.keymap.set("n", "<leader>.", harpoon_mark.add_file, { desc = "Add file to Harpoon" }) -- Add file
+  vim.keymap.set("n", "<leader>,", harpoon_ui.toggle_quick_menu, { desc = "Toggle Harpoon menu" }) -- Open Harpoon menu
+
+  -- Navigate to files
+  vim.keymap.set("n", "<leader>1", function()
+    harpoon_ui.nav_file(1)
+  end, { desc = "Go to file 1 in Harpoon" })
+  vim.keymap.set("n", "<leader>2", function()
+    harpoon_ui.nav_file(2)
+  end, { desc = "Go to file 2 in Harpoon" })
+  vim.keymap.set("n", "<leader>3", function()
+    harpoon_ui.nav_file(3)
+  end, { desc = "Go to file 3 in Harpoon" })
+  vim.keymap.set("n", "<leader>4", function()
+    harpoon_ui.nav_file(4)
+  end, { desc = "Go to file 4 in Harpoon" })
+
+  -- -- Use Harpoon terminal
+  -- vim.keymap.set("n", "<leader>t", function()
+  --   harpoon_term.gotoTerminal(1)
+  -- end, { desc = "Go to terminal 1" })
+  -- vim.keymap.set("n", "<leader>T", function()
+  --   harpoon_term.gotoTerminal(2)
+  -- end, { desc = "Go to terminal 2" })
 end
 
 return M

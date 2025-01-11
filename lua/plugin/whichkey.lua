@@ -6,7 +6,7 @@ local M = {
 }
 
 function M.config()
-  local mappings =   {
+  local mappings = {
     { "<leader>/", "<Plug>(comment_toggle_linewise_current)", desc = "Comment", nowait = true, remap = false },
     { "<leader>\\", group = "Settings", nowait = true, remap = false },
     { "<leader>\\c", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme", nowait = true, remap = false },
@@ -56,8 +56,20 @@ function M.config()
     { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit", nowait = true, remap = false },
     { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Git Diff", nowait = true, remap = false },
     { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit", nowait = true, remap = false },
-    { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", desc = "Next Hunk", nowait = true, remap = false },
-    { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", desc = "Prev Hunk", nowait = true, remap = false },
+    {
+      "<leader>gj",
+      "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
+      desc = "Next Hunk",
+      nowait = true,
+      remap = false,
+    },
+    {
+      "<leader>gk",
+      "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
+      desc = "Prev Hunk",
+      nowait = true,
+      remap = false,
+    },
     -- { "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", desc = "Blame", nowait = true, remap = false },
     { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file", nowait = true, remap = false },
     { "<leader>gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", desc = "Preview Hunk", nowait = true, remap = false },
@@ -88,7 +100,6 @@ function M.config()
     { "<leader>w", "<cmd>w<CR>", desc = "Save", nowait = true, remap = false },
   }
 
-
   local opts = {
     mode = "n", -- NORMAL mode
     prefix = "<leader>",
@@ -97,7 +108,7 @@ function M.config()
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
   }
-  local vmappings =   {
+  local vmappings = {
     {
       mode = { "v" },
       { "<leader>/", "<Plug>(comment_toggle_linewise_visual)", desc = "Comment toggle linewise (visual)", nowait = true, remap = false },
@@ -145,24 +156,24 @@ function M.config()
         g = true, -- bindings for prefixed with g
       },
     },
-      win = {
-        -- don't allow the popup to overlap with the cursor
-        no_overlap = true,
-        -- width = 1,
-        -- height = { min = 4, max = 25 },
-        -- col = 0,
-        -- row = math.huge,
-        -- border = "none",
-        -- padding = { 1, 2 }, -- extra window padding [top/bottom, right/left]
-        title = true,
-        title_pos = "center",
-        zindex = 1000,
-        -- Additional vim.wo and vim.bo options
-        bo = {},
-        wo = {
-          -- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
-        },
+    win = {
+      -- don't allow the popup to overlap with the cursor
+      no_overlap = true,
+      -- width = 1,
+      -- height = { min = 4, max = 25 },
+      -- col = 0,
+      -- row = math.huge,
+      -- border = "none",
+      -- padding = { 1, 2 }, -- extra window padding [top/bottom, right/left]
+      title = true,
+      title_pos = "center",
+      zindex = 1000,
+      -- Additional vim.wo and vim.bo options
+      bo = {},
+      wo = {
+        -- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
       },
+    },
     layout = {
       height = { min = 4, max = 25 }, -- min and max height of the columns
       width = { min = 20, max = 50 }, -- min and max width of the columns

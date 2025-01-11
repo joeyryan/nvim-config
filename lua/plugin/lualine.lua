@@ -5,7 +5,7 @@ local M = {
 }
 
 function M.config()
-  local sl_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
+  -- local sl_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
   local icons = require("core.icons")
   local diff = {
     "diff",

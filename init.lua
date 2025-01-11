@@ -43,7 +43,7 @@ else
   spec("plugin.fidget")
   spec("plugin.vimtex")
   spec("plugin.copilot")
-  -- spec("plugin.harpoon")
+  spec("plugin.harpoon")
   -- spec("plugin.hardtime")
   -- spec("plugin.bookmarks")
   spec("plugin.whichkey")
