@@ -22,6 +22,7 @@ else
   spec("plugin.breadcrumbs")
   -- spec("plugin.null-ls")
   spec("plugin.illuminate")
+  spec("plugin.todo-comments")
   spec("plugin.telescope")
   spec("plugin.nvimtree")
   spec("plugin.trouble")
