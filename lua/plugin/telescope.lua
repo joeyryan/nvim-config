@@ -61,7 +61,7 @@ function M.config()
           ["q"] = actions.close,
         },
       },
-    file_ignore_patterns = { ".git/", "node_modules/", "dist/" },
+      file_ignore_patterns = { ".git/", "node_modules/", "dist/" },
     },
     pickers = {
       live_grep = {
