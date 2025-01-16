@@ -2,9 +2,9 @@
 local M = {
   "neovim/nvim-lspconfig",
   dependencies = {
-    -- {
-    --   "folke/neodev.nvim",
-    -- },
+    {
+      "folke/neodev.nvim",
+    },
     {
       "folke/lazydev.nvim",
     },
@@ -125,9 +125,9 @@ function M.config()
     end
 
     -- neodev is a lua specific plugin that loads neovim documentation into the lsp
-    -- if server == "lua_ls" then
-    --   require("neodev").setup({})
-    -- end
+    if server == "lua_ls" then
+      require("neodev").setup({})
+    end
 
     lspconfig[server].setup(opts)
   end
