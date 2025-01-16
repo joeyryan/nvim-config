@@ -35,6 +35,7 @@ else
   spec("plugin.diffview")
   spec("plugin.indentline")
   spec("plugin.alpha")
+  spec("plugin.zen")
   spec("plugin.netrw")
   spec("plugin.project")
   spec("plugin.toggleterm")
