@@ -1,7 +1,7 @@
 -- Automatically highlights other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
 local M = {
   "RRethy/vim-illuminate",
-  event = "VeryLazy",
+  event = "InsertEnter",
 }
 
 function M.config()

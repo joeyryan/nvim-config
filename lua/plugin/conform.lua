@@ -1,6 +1,7 @@
 -- Formats code on save
 local M = {
   "stevearc/conform.nvim",
+  event = "VeryLazy",
   opts = {},
 }
 

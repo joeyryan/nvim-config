@@ -1,6 +1,7 @@
 -- A few plugins to enable and configure LSP support
 local M = {
   "williamboman/mason-lspconfig.nvim",
+  event = { "VeryLazy" },
   dependencies = {
     {
       "williamboman/mason.nvim",

@@ -1,7 +1,7 @@
 -- Language parsing tools for code highlighting, folding, indentation, autopairs, etc.
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPost", "BufNewFile" },
+  event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   build = ":TSUpdate",
   dependencies = {
     {
