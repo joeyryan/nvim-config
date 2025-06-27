@@ -25,6 +25,7 @@ local M = {
 function M.config()
   require("nvim-treesitter.configs").setup({
     ensure_installed = {
+      "html",
       "lua",
       "markdown",
       "markdown_inline",
