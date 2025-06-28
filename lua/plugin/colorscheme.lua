@@ -7,9 +7,9 @@ local M = {
 function M.config()
   require("catppuccin").setup({
     lazy = false,
-    -- flavour = "mocha",
-    flavour = "macchiato",
-    transparent_background = false,
+    flavour = "mocha",
+    -- flavour = "macchiato",
+    -- transparent_background = true,
     -- term_colors = false,
     compile = {
       enabled = false,
@@ -43,7 +43,7 @@ function M.config()
       },
       treesitter = true,
       gitsigns = true,
-      -- fidget = true,
+      fidget = true,
       bufferline = true,
       -- dap = true,
       -- dap_ui = true,
@@ -56,6 +56,11 @@ function M.config()
         -- base = "#1d1d2d",
       },
     },
+    custom_highlights = function(colors)
+      return {
+        -- MethodDecorator = { fg = colors.flamingo },
+      }
+    end,
     highlight_overrides = {
       all = function(colors)
         return {
