@@ -1,7 +1,10 @@
 -- Fuzzy finder with previews. Search through files, buffers, commands, and other lists
 local M = {
   "nvim-telescope/telescope.nvim",
-  dependencies = { { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true } },
+  dependencies = {
+    -- { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+    { "nvim-telescope/telescope-fzf-native.nvim", lazy = true },
+  },
   lazy = true,
   cmd = "Telescope",
 }
