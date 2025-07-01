@@ -11,8 +11,8 @@ function M.config()
     manual_mode = false,
     detection_methods = { "pattern", "lsp" },
     patterns = {
-      ".git",
       ">Projects",
+      ".git",
       -- "package.json",
       "Makefile",
     },
