@@ -18,9 +18,13 @@ local M = {
       "ray-x/lsp_signature.nvim",
     },
   },
+  opts = {
+    inlay_hints = { enabled = true },
+  },
 }
 
 M.servers = {
+  "phpactor",
   "clangd",
   "lua_ls",
   "cssls",
@@ -35,9 +39,11 @@ M.servers = {
   "tailwindcss",
   -- "csharp_ls",
   "eslint",
-  "angularls",
+  -- "angularls",
   "omnisharp",
   "terraformls",
+  "rust_analyzer",
+  "asm_lsp",
 }
 
 function M.on_attach(client, bufnr)
@@ -107,15 +113,12 @@ function M.config()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
   end
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
-  require("lspconfig.ui.windows").default_options.border = "single"
-
   -- Setup LSP for each server in the servers list
   for _, server in pairs(M.servers) do
     local opts = {
       on_attach = M.on_attach,
       capabilities = M.common_capabilities(),
+      inlay_hints = { enabled = true },
     }
 
     -- Check lspsettings folder for plugin specific config and load if found
@@ -131,6 +134,9 @@ function M.config()
 
     lspconfig[server].setup(opts)
   end
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", max_width = 80 })
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single", max_width = 80 })
 
   require("lsp_signature").setup({
     zindex = 20,
