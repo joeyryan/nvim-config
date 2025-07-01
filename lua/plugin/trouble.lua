@@ -2,9 +2,6 @@
 local M = {
   "folke/trouble.nvim",
   event = "VeryLazy",
-  dependencies = {
-    { "nvim-cmp" },
-  },
 }
 
 function M.config()
