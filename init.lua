@@ -49,5 +49,6 @@ else
   spec("plugin.harpoon")
   -- spec("plugin.bookmarks")
   spec("plugin.whichkey")
+  -- spec("plugin.leetcode")
   require("plugin.lazy")
 end
