@@ -30,7 +30,6 @@ M.servers = {
   "cssls",
   "html",
   -- "tsserver",
-  "astro",
   "pyright",
   "bashls",
   "jsonls",
@@ -109,9 +108,9 @@ function M.config()
 
   vim.diagnostic.config(default_diagnostic_config)
 
-  for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-  end
+  -- for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
+  --   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+  -- end
 
   -- Setup LSP for each server in the servers list
   for _, server in pairs(M.servers) do
@@ -134,9 +133,6 @@ function M.config()
 
     lspconfig[server].setup(opts)
   end
-
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single", max_width = 80 })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single", max_width = 80 })
 
   require("lsp_signature").setup({
     zindex = 20,
