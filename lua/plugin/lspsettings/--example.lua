@@ -1,0 +1,10 @@
+------ Filename should be name of language server ------
+------ Here are possible properties that can be set, all are optional ------
+-- cmd	Custom command to launch the LSP server
+-- filetypes	Filetypes this server applies to
+-- root_dir	Function that determines the project root
+-- settings	Language-specific LSP settings
+-- init_options	Additional options passed to the LSP during init
+-- capabilities	Client capabilities override (e.g. from cmp_nvim_lsp)
+-- on_attach	Override your default on_attach handler
+-- commands	Custom LSP-related commands
