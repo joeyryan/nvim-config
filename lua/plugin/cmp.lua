@@ -9,10 +9,6 @@ local M = {
       event = "InsertEnter",
     },
     {
-      "hrsh7th/cmp-emoji",
-      event = "InsertEnter",
-    },
-    {
       "hrsh7th/cmp-buffer",
       event = "InsertEnter",
     },
@@ -22,6 +18,10 @@ local M = {
     },
     {
       "hrsh7th/cmp-cmdline",
+      event = "InsertEnter",
+    },
+    {
+      "hrsh7th/cmp-emoji",
       event = "InsertEnter",
     },
     {
@@ -47,7 +47,7 @@ local M = {
 }
 
 function M.config()
-  vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
+  -- vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
   local cmp = require("cmp")
   local luasnip = require("luasnip")
@@ -78,14 +78,13 @@ function M.config()
       ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
+      -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items (prevents mid-snippet accidents).
       ["<CR>"] = cmp.mapping.confirm({ select = true }),
       ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.expandable() then
-          luasnip.expand()
-        elseif luasnip.expand_or_jumpable() then
+        if luasnip.expand_or_locally_jumpable() then -- Check snippet first to prioritize jumps/expansions (ignores visible popup)
           luasnip.expand_or_jump()
+        elseif cmp.visible() then
+          cmp.select_next_item()
         elseif check_backspace() then
           fallback()
         else
@@ -93,9 +92,24 @@ function M.config()
         end
       end, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
+        if luasnip.locally_jumpable(-1) then -- Check snippet first for backward jumps
+          luasnip.jump(-1)
+        elseif cmp.visible() then
           cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      -- Dedicated keys for snippet jumps (work even with popup open; kept as backup)
+      ["<C-l>"] = cmp.mapping(function(fallback)
+        if luasnip.locally_jumpable(1) then
+          luasnip.jump(1)
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      ["<C-h>"] = cmp.mapping(function(fallback)
+        if luasnip.locally_jumpable(-1) then
           luasnip.jump(-1)
         else
           fallback()
@@ -107,24 +121,24 @@ function M.config()
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
         vim_item.kind = icons.kind[vim_item.kind]
+        -- Display source name in the menu field
         vim_item.menu = ({
-          nvim_lsp = "",
-          nvim_lua = "",
-          luasnip = "",
-          buffer = "",
-          path = "",
-          emoji = "",
-        })[entry.source.name]
+          nvim_lsp = "[LSP]",
+          nvim_lua = "[Lua]",
+          luasnip = "[Snippet]",
+          buffer = "[Buffer]",
+          path = "[Path]",
+        })[entry.source.name] or entry.source.name -- Fallback to raw source name if not mapped
 
         if entry.source.name == "lab.quick_data" then
           vim_item.kind = icons.misc.CircuitBoard
           vim_item.kind_hl_group = "CmpItemKindConstant"
         end
 
-        if entry.source.name == "emoji" then
-          vim_item.kind = icons.misc.Smiley
-          vim_item.kind_hl_group = "CmpItemKindEmoji"
-        end
+        -- if entry.source.name == "emoji" then
+        --   vim_item.kind = icons.misc.Smiley
+        --   vim_item.kind_hl_group = "CmpItemKindEmoji"
+        -- end
         return vim_item
       end,
     },
@@ -153,7 +167,7 @@ function M.config()
       { name = "buffer" },
       { name = "path" },
       { name = "calc" },
-      { name = "emoji" },
+      -- { name = "emoji" },
       { name = "treesitter" },
       { name = "tmux" },
       {
