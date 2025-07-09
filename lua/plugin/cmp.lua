@@ -54,6 +54,12 @@ function M.config()
   require("luasnip/loaders/from_vscode").lazy_load()
   require("luasnip").filetype_extend("typescriptreact", { "html" })
 
+  -- Add this LuaSnip setup for better region handling (forgets placeholders on InsertLeave/TextChanged)
+  luasnip.setup({
+    region_check_events = "CursorHold,InsertLeave",
+    delete_check_events = "TextChanged,InsertEnter",
+  })
+
   local check_backspace = function()
     local col = vim.fn.col(".") - 1
     return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
@@ -116,7 +122,6 @@ function M.config()
         end
       end, { "i", "s" }),
     }),
-
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
