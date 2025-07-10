@@ -147,6 +147,32 @@ function M.config()
         return vim_item
       end,
     },
+    sorting = {
+      priority_weight = 2, -- Boosts higher-priority sources slightly more
+      comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score, -- Fuzzy matching relevance
+        -- Custom comparator to deprioritize underscore-prefixed items (e.g., private vars)
+        -- function(entry1, entry2)
+        --   local _, entry1_under = entry1.completion_item.label:find("^_+")
+        --   local _, entry2_under = entry2.completion_item.label:find("^_+")
+        --   entry1_under = entry1_under or 0
+        --   entry2_under = entry2_under or 0
+        --   if entry1_under > entry2_under then
+        --     return false
+        --   elseif entry1_under < entry2_under then
+        --     return true
+        --   end
+        -- end,
+        cmp.config.compare.recently_used, -- Prioritize recently used items
+        cmp.config.compare.locality, -- Prioritize local scope
+        cmp.config.compare.kind, -- Prioritize by type (e.g., methods over vars)
+        cmp.config.compare.sort_text,
+        cmp.config.compare.order,
+        cmp.config.compare.length, -- Length now lower priority
+      },
+    },
     sources = {
       {
         name = "nvim_lsp",
