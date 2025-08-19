@@ -1,5 +1,5 @@
 return {
-  cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+  cmd = { "OmniSharp", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
   enable_editorconfig_support = true,
   enable_import_completion = true,
   organize_imports_on_format = true,
