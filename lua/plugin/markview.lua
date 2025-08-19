@@ -6,6 +6,9 @@ local M = {
     preview = {
       icon_provider = "devicons", -- "mini" or "devicons"
     },
+    experimental = {
+      check_rtp_message = false,
+    },
   },
 }
 
