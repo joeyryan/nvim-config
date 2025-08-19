@@ -38,11 +38,12 @@ M.servers = {
   "tailwindcss",
   -- "csharp_ls",
   "eslint",
-  -- "angularls",
+  "angularls",
   "omnisharp",
   "terraformls",
   "rust_analyzer",
   "asm_lsp",
+  "cmake",
 }
 
 function M.on_attach(client, bufnr)
@@ -50,7 +51,8 @@ function M.on_attach(client, bufnr)
   local keymap = vim.api.nvim_buf_set_keymap
   keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  -- keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover({ max_width = 100, wrap = true, border = 'single' })<CR>", opts)
   keymap(bufnr, "i", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   -- keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
