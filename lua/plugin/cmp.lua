@@ -133,6 +133,8 @@ function M.config()
           luasnip = "[Snippet]",
           buffer = "[Buffer]",
           path = "[Path]",
+          supermaven = "[AI]", -- If you add Supermaven
+          lazydev = "[LazyDev]",
         })[entry.source.name] or entry.source.name -- Fallback to raw source name if not mapped
 
         if entry.source.name == "lab.quick_data" then
