@@ -6,9 +6,7 @@ return {
       },
       -- Note: This assumes clippy is installed via rustup component add clippy.
       -- If not, either install it or change checkOnSave.command to "check".
-      checkOnSave = {
-        command = "clippy",
-      },
+      checkOnSave = true,
       diagnostics = {
         enable = true,
         experimental = {
