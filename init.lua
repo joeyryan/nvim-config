@@ -29,6 +29,7 @@ else
   spec("plugin.aerial")
   spec("plugin.lualine")
   spec("plugin.cmp")
+  -- spec("plugin.blink")
   spec("plugin.comment")
   spec("plugin.gitsigns")
   spec("plugin.neogit")
@@ -44,7 +45,7 @@ else
   -- spec "plugin.dapui"
   spec("plugin.fidget")
   spec("plugin.vimtex")
-  spec("plugin.markview")
+  -- spec("plugin.markview")
   spec("plugin.copilot")
   spec("plugin.harpoon")
   -- spec("plugin.bookmarks")
@@ -52,3 +53,12 @@ else
   -- spec("plugin.leetcode")
   require("plugin.lazy")
 end
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  -- Maximum width of the hover window
+  max_width = 100,
+  -- Optional: Ensure wrapping by setting wrap to true
+  wrap = true,
+  -- Optional: Additional styling for the floating window
+  border = "single", -- Can be "single", "double", "rounded", etc.
+})
