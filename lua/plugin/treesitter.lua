@@ -3,7 +3,14 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPost", "BufNewFile", "VeryLazy" },
   build = ":TSUpdate",
+  lazy = false,
   dependencies = {
+    {
+      -- markview must be loaded before treesitter, so including it
+      -- here a a dependency. Config is in plugins/markview.lua file
+      "OXY2DEV/markview.nvim",
+      lazy = false,
+    },
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
       event = "VeryLazy",
