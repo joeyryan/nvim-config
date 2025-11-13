@@ -78,10 +78,10 @@ function M.common_capabilities()
       "additionalTextEdits",
     },
   }
+  return capabilities
 end
 
 function M.config()
-  local lspconfig = require("lspconfig")
   local icons = require("core.icons")
 
   local default_diagnostic_config = {
@@ -110,16 +110,11 @@ function M.config()
 
   vim.diagnostic.config(default_diagnostic_config)
 
-  -- for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
-  --   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
-  -- end
-
-  -- Setup LSP for each server in the servers list
+  -- Setup LSP for each server in the servers list using new vim.lsp.config API
   for _, server in pairs(M.servers) do
     local opts = {
       on_attach = M.on_attach,
       capabilities = M.common_capabilities(),
-      inlay_hints = { enabled = true },
     }
 
     -- Check lspsettings folder for plugin specific config and load if found
@@ -133,7 +128,9 @@ function M.config()
       require("neodev").setup({})
     end
 
-    lspconfig[server].setup(opts)
+    -- Use the new vim.lsp.config API
+    vim.lsp.config[server] = opts
+    vim.lsp.enable(server)
   end
 
   require("lsp_signature").setup({
