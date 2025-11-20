@@ -24,6 +24,7 @@ local M = {
 }
 
 M.servers = {
+  "kotlin_lsp",
   "phpactor",
   "clangd",
   "lua_ls",
