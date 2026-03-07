@@ -29,6 +29,7 @@ else
   spec("plugin.aerial")
   spec("plugin.lualine")
   spec("plugin.cmp")
+  spec("plugin.clangd_extensions")
   -- spec("plugin.blink")
   spec("plugin.comment")
   spec("plugin.gitsigns")
