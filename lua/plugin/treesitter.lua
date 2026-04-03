@@ -30,22 +30,24 @@ local M = {
   },
 }
 function M.config()
-  require("nvim-treesitter.configs").setup({
-    ensure_installed = {
-      "html",
-      "lua",
-      "markdown",
-      "markdown_inline",
-      "bash",
-      "python",
-      "typescript",
-      "javascript",
-      "c_sharp",
-      "sql",
-      "json",
-      "tsx",
-      "terraform",
-    }, -- put the language you want in this array
+  require("nvim-treesitter").install({
+    "html",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "bash",
+    "python",
+    "typescript",
+    "javascript",
+    "c_sharp",
+    "sql",
+    "json",
+    "tsx",
+    "terraform",
+    "rust",
+  })
+  require("nvim-treesitter").setup({
+    -- ensure_installed = {},
     ignore_install = { "" },
     sync_install = false,
     highlight = {
