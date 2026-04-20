@@ -9,48 +9,57 @@ require("core.keymaps")
 require("core.autocmds")
 
 if vim.g.vscode then
---
+  -- VSCode-specific config (if any)
 else
+  -- UI
   spec("plugin.colorscheme")
   spec("plugin.devicons")
-  -- spec("plugin.bufferline")
+  spec("plugin.lualine")
+  spec("plugin.alpha")
+  spec("plugin.indentline")
+
+  -- Navigation
+  spec("plugin.nvimtree")
+  spec("plugin.telescope")
+  spec("plugin.harpoon")
+  spec("plugin.project")
+  spec("plugin.aerial")
+
+  -- Editor features
   spec("plugin.treesitter")
-  -- spec("plugin.schemastore")
+  spec("plugin.comment")
+  spec("plugin.illuminate")
+  spec("plugin.todo-comments")
+  spec("plugin.zen")
+
+  -- LSP & Completion
   spec("plugin.mason")
   spec("plugin.lsp")
   spec("plugin.typescript-tools")
-  spec("plugin.breadcrumbs")
-  -- spec("plugin.null-ls")
-  spec("plugin.illuminate")
-  spec("plugin.todo-comments")
-  spec("plugin.telescope")
-  spec("plugin.nvimtree")
-  spec("plugin.trouble")
-  spec("plugin.aerial")
-  spec("plugin.lualine")
-  -- spec("plugin.cmp")
-  spec("plugin.clangd_extensions")
   spec("plugin.blink")
-  spec("plugin.comment")
+  spec("plugin.clangd_extensions")
+  spec("plugin.breadcrumbs")
+  spec("plugin.fidget")
+  spec("plugin.trouble")
+
+  -- Formatting
+  spec("plugin.conform")
+
+  -- Git
   spec("plugin.gitsigns")
   spec("plugin.neogit")
   spec("plugin.diffview")
-  spec("plugin.indentline")
-  spec("plugin.alpha")
-  spec("plugin.zen")
-  spec("plugin.netrw")
-  spec("plugin.project")
+
+  -- Utilities
   spec("plugin.toggleterm")
   spec("plugin.bufdelete")
-  spec("plugin.conform")
-  -- spec "plugin.dapui"
-  spec("plugin.fidget")
-  spec("plugin.vimtex")
-  -- spec("plugin.markview")
-  spec("plugin.copilot")
-  -- spec("plugin.harpoon")
-  -- spec("plugin.bookmarks")
+  spec("plugin.netrw")
   spec("plugin.whichkey")
-  -- spec("plugin.leetcode")
+
+  -- Language-specific
+  spec("plugin.vimtex")
+  spec("plugin.markview")
+  spec("plugin.copilot")
+
   require("plugin.lazy")
 end

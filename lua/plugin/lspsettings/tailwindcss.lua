@@ -10,6 +10,14 @@ return {
     "astro",
     "svelte",
   },
+  root_markers = {
+    "tailwind.config.js",
+    "tailwind.config.ts",
+    "tailwind.config.mjs",
+    "postcss.config.js",
+    "package.json",
+    ".git",
+  },
   init_options = {
     userLanguages = {
       eelixir = "html",
@@ -28,18 +36,11 @@ return {
       },
       experimental = {
         classRegex = {
-          "tw`([^`]*)", -- tw`...`
-          'tw="([^"]*)', -- tw="..."
-          'tw={"([^"}]*)', -- tw={"..."}
+          "tw`([^`]*)",
+          'tw="([^"]*)',
+          'tw={"([^"}]*)',
         },
       },
     },
   },
-  root_dir = require("lspconfig.util").root_pattern(
-    "tailwind.config.js",
-    "tailwind.config.ts",
-    "postcss.config.js",
-    "package.json",
-    ".git"
-  ),
 }

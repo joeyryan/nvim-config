@@ -1,13 +1,13 @@
 return {
+  root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", ".git" },
   settings = {
     python = {
       analysis = {
-        typeCheckingMode = "basic", -- or "strict" for more diagnostics
+        typeCheckingMode = "basic",
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
-        diagnosticMode = "openFilesOnly", -- or "workspace"
+        diagnosticMode = "openFilesOnly",
       },
     },
   },
-  root_dir = require("lspconfig.util").root_pattern("pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git"),
 }

@@ -1,7 +1,7 @@
 return {
   cmd = { "phpactor", "language-server" },
   filetypes = { "php" },
-  root_dir = require("lspconfig.util").root_pattern("composer.json", ".git", ".phpactor.json"),
+  root_markers = { "composer.json", ".phpactor.json", ".phpactor.yml", ".git" },
   settings = {
     phpactor = {
       language_server_phpstan_enabled = true,

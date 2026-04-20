@@ -1,6 +1,6 @@
 return {
-  filetypes = { "terraform", "tf" },
-  root_dir = require("lspconfig.util").root_pattern(".terraform", ".git", "*.tf"),
+  filetypes = { "terraform", "tf", "terraform-vars" },
+  root_markers = { ".terraform", "*.tf", ".git" },
   settings = {
     terraform = {
       validateOnSave = true,
