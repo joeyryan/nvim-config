@@ -9,6 +9,7 @@ return {
       checkOnSave = true,
       diagnostics = {
         enable = true,
+        disabled = { "unlinked-file" },
         experimental = {
           enable = true,
         },

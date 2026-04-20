@@ -7,6 +7,7 @@ local M = {
 
 function M.config()
   local mappings = {
+    { "<leader><leader>", "<cmd>Telescope buffers<CR>", desc = "Open Buffers", nowait = true, remap = false },
     { "<leader>/", "<Plug>(comment_toggle_linewise_current)", desc = "Comment", nowait = true, remap = false },
     { "<leader>\\", group = "Settings", nowait = true, remap = false },
     { "<leader>\\c", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme", nowait = true, remap = false },
