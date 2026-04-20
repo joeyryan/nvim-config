@@ -119,6 +119,8 @@ return {
     TriangleArrowLeft = "",
     TriangleArrowRight = "",
     TriangleArrowUp = "",
+    SymlinkArrow = " ➛ ",
+    Forward = "",
   },
   diagnostics = {
     BoldError = "",

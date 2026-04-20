@@ -1,6 +1,9 @@
 local M = {
   "folke/zen-mode.nvim",
   dependencies = {},
+  keys = {
+    { "<leader>z", "<cmd>ZenMode<CR>", desc = "Toggle Zen Mode" },
+  },
   opts = {},
   lazy = false,
 }

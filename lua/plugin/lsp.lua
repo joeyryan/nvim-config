@@ -1,4 +1,4 @@
--- LSP configuration and related plugins
+-- LSP configuration using native Neovim 0.11+ APIs
 
 -- Server list (exported for mason.lua to use)
 local servers = {
@@ -55,7 +55,7 @@ local function common_capabilities()
   return capabilities
 end
 
-local function config()
+local function setup_lsp()
   local icons = require("core.icons")
 
   local default_diagnostic_config = {
@@ -84,7 +84,7 @@ local function config()
 
   vim.diagnostic.config(default_diagnostic_config)
 
-  -- Setup LSP for each server
+  -- Setup LSP for each server using native Neovim 0.11+ API
   for _, server in pairs(servers) do
     local opts = {
       on_attach = on_attach,
@@ -97,43 +97,35 @@ local function config()
       opts = vim.tbl_deep_extend("force", settings, opts)
     end
 
-    -- Use the new vim.lsp.config instead of nvim-lspconfig
     vim.lsp.config[server] = opts
     vim.lsp.enable(server)
   end
 end
 
--- Return plugin specs as an array (for lazy.nvim import)
--- Also attach servers list so mason.lua can access it
-local specs = {
-  -- Core LSP plugin (only needed for Neovim < 0.11)
+-- Plugin specs array
+local M = {
+  -- nvim-lspconfig for server configurations (root_dir, cmd, etc.)
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    config = config,
+    config = setup_lsp,
   },
 
-  -- Neodev for Lua development
-  {
-    "folke/neodev.nvim",
-    ft = "lua",
-  },
-
-  -- LazyDev for lazy-loading Neovim Lua API
+  -- LazyDev for Neovim Lua API completion
   {
     "folke/lazydev.nvim",
     ft = "lua",
     opts = {},
   },
 
-  -- Schemastore for JSON schemas
+  -- Schemastore for JSON/YAML schemas
   {
     "b0o/schemastore.nvim",
-    ft = "json",
+    ft = { "json", "yaml" },
   },
 }
 
--- Attach servers to the specs array so mason.lua can access via require("plugin.lsp").servers
-specs.servers = servers
+-- Attach servers list so mason.lua can access via require("plugin.lsp").servers
+M.servers = servers
 
-return specs
+return M

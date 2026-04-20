@@ -1,16 +1,9 @@
--- Language parsing tools for code highlighting, folding, indentation, autopairs, etc.
+-- Language parsing tools for code highlighting, folding, indentation, etc.
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPost", "BufNewFile", "VeryLazy" },
+  event = { "BufReadPost", "BufNewFile" },
   build = ":TSUpdate",
-  lazy = false,
   dependencies = {
-    {
-      -- markview must be loaded before treesitter, so including it
-      -- here a a dependency. Config is in plugins/markview.lua file
-      "OXY2DEV/markview.nvim",
-      lazy = false,
-    },
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
       event = "VeryLazy",
@@ -18,18 +11,19 @@ local M = {
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
       event = "VeryLazy",
+      opts = {
+        enable_autocmd = false,
+      },
     },
     {
       "windwp/nvim-ts-autotag",
       event = "VeryLazy",
     },
-    {
-      "windwp/nvim-autopairs",
-      event = "InsertEnter",
-    },
   },
 }
+
 function M.config()
+  ---@diagnostic disable-next-line: missing-fields
   require("nvim-treesitter").install({
     "html",
     "lua",
@@ -45,30 +39,29 @@ function M.config()
     "tsx",
     "terraform",
     "rust",
+    "c",
+    "cpp",
+    "yaml",
+    "toml",
+    "vim",
+    "vimdoc",
   })
   require("nvim-treesitter").setup({
-    -- ensure_installed = {},
-    ignore_install = { "" },
+    ignore_install = {},
     sync_install = false,
+    auto_install = true,
     highlight = {
       enable = true,
       disable = { "markdown" },
       additional_vim_regex_highlighting = false,
     },
     indent = { enable = true },
-    matchup = {
-      enable = { "astro" },
-      disable = { "lua" },
-    },
     autotag = { enable = true },
-    autopairs = { enable = true },
     textobjects = {
       select = {
         enable = true,
-        -- Automatically jump forward to textobj, similar to targets.vim
         lookahead = true,
         keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
           ["af"] = "@function.outer",
           ["if"] = "@function.inner",
           ["at"] = "@class.outer",
@@ -94,10 +87,6 @@ function M.config()
         },
       },
     },
-  })
-
-  require("ts_context_commentstring").setup({
-    enable_autocmd = false,
   })
 end
 

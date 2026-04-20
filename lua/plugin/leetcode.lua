@@ -1,4 +1,4 @@
--- Allow deleting buffers without changing the window layout
+-- Practice coding problems from LeetCode
 local M = {
   event = "VeryLazy",
   "kawre/leetcode.nvim",

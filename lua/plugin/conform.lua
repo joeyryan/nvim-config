@@ -2,11 +2,7 @@
 local M = {
   "stevearc/conform.nvim",
   event = "VeryLazy",
-  opts = {},
-}
-
-function M.config()
-  require("conform").setup({
+  opts = {
     formatters_by_ft = {
       javascript = { "prettier" },
       typescript = { "prettier" },
@@ -25,18 +21,17 @@ function M.config()
       python = { "black" },
     },
     format_on_save = {
-      -- These options will be passed to conform.format()
       timeout_ms = 2000,
       lsp_fallback = true,
       async = false,
       quiet = false,
     },
-  })
-  require("conform").formatters.shfmt = {
-    prepend_args = { "-i", "2" },
-    -- The base args are { "-filename", "$FILENAME" } so the final args will be
-    -- { "-i", "2", "-filename", "$FILENAME" }
-  }
-end
+    formatters = {
+      shfmt = {
+        prepend_args = { "-i", "2" },
+      },
+    },
+  },
+}
 
 return M

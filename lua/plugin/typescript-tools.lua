@@ -1,15 +1,11 @@
+-- TypeScript language server with better performance than tsserver
 local M = {
   "pmizio/typescript-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-  opts = {},
 }
-
--- function M.on_attach() end
 
 function M.config()
   require("typescript-tools").setup({
-    -- on_attach = M.on_attach,
-    -- handlers = { },
     settings = {
       -- spawn additional tsserver instance to calculate diagnostics on it
       separate_diagnostic_server = true,

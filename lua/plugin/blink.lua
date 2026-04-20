@@ -1,4 +1,6 @@
-return {
+-- Completion engine and related plugins
+local M = {
+  -- LuaSnip for snippets
   {
     "L3MON4D3/LuaSnip",
     event = "InsertEnter",
@@ -65,46 +67,30 @@ return {
       { "L3MON4D3/LuaSnip" },
       { "rafamadriz/friendly-snippets" },
     },
-
     opts = {
-      -- Use LuaSnip for snippet expand/jump
       snippets = {
         preset = "luasnip",
       },
-
-      -- Keymaps: 'enter' preset as base (CR to accept, Tab/S-Tab for snippets)
-      -- Override C-k/C-j for menu navigation
       keymap = {
         preset = "enter",
         ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
         ["<C-j>"] = { "select_next", "fallback_to_mappings" },
-        -- Explicit snippet jump bindings (mirrors original C-l/C-h in cmp)
         ["<C-l>"] = { "snippet_forward", "fallback" },
         ["<C-h>"] = { "snippet_backward", "fallback" },
       },
-
       appearance = {
         nerd_font_variant = "mono",
-        -- Use the same kind icons as the rest of the config
         kind_icons = require("core.icons").kind,
       },
-
       sources = {
-        -- Default sources for all filetypes
         default = { "lsp", "path", "snippets", "buffer" },
-        -- Lazydev only needed in Lua files
         per_filetype = {
           lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
         },
         providers = {
           lsp = {
-            -- Filter out noisy kinds to keep the list focused on code
-            -- Mirrors the entry_filter from the old nvim-cmp config:
-            --   * Block Text completions (kind=1) everywhere except markdown
-            --   * Block Snippet completions (kind=15) in Java (LSP sends them but LuaSnip handles them)
             transform_items = function(ctx, items)
               local ft = vim.bo[ctx.bufnr].filetype
-              -- CompletionItemKind numbers (per LSP spec)
               local TEXT = 1
               local SNIPPET = 15
               return vim.tbl_filter(function(item)
@@ -137,14 +123,11 @@ return {
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
-            -- Ensure lazydev results always appear at the top in Lua files
             score_offset = 100,
           },
         },
       },
-
       completion = {
-        -- Documentation popup: show automatically when navigating items
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 200,
@@ -152,19 +135,14 @@ return {
             border = "single",
           },
         },
-
-        -- Completion list: pre-highlight first item but don't auto-insert it —
-        -- must press CR to confirm
         list = {
           selection = {
             preselect = true,
             auto_insert = false,
           },
         },
-
         menu = {
           border = "single",
-          -- Show kind icon | label + detail columns
           draw = {
             columns = {
               { "kind_icon" },
@@ -173,20 +151,15 @@ return {
             },
           },
         },
-
-        -- blink handles auto-brackets natively; no cmp on_confirm_done hook needed
         accept = {
           auto_brackets = {
             enabled = true,
           },
         },
-
         ghost_text = {
           enabled = false,
         },
       },
-
-      -- Built-in signature help (replaces lsp_signature.nvim)
       signature = {
         enabled = true,
         window = {
@@ -194,11 +167,11 @@ return {
           max_width = 100,
         },
       },
-
       fuzzy = {
-        -- Use the Rust binary we build from source; fall back to Lua if not ready
         implementation = "prefer_rust",
       },
     },
   },
 }
+
+return M

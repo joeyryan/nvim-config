@@ -46,10 +46,10 @@ vim.opt.fillchars:append({
 
 vim.opt.shortmess:append("c")
 
--- allow cursor to wrap around lines
-vim.cmd("set whichwrap+=<,>,[,],h,l")
--- treat hyphens as part of a word
-vim.cmd([[set iskeyword+=-]])
+-- Allow cursor to wrap around lines
+vim.opt.whichwrap:append("<,>,[,],h,l")
+-- Treat hyphens as part of a word
+vim.opt.iskeyword:append("-")
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
