@@ -27,7 +27,6 @@ local function on_attach(client, bufnr)
   keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
   keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover({ max_width = 100, wrap = true, border = 'single' })<CR>", opts)
-  keymap(bufnr, "i", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
   -- Modified gi and gr to use Trouble, which is a nicer list view than quickfix
@@ -36,11 +35,12 @@ local function on_attach(client, bufnr)
 end
 
 local function common_capabilities()
-  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  local status_ok, blink = pcall(require, "blink.cmp")
   if status_ok then
-    return cmp_nvim_lsp.default_capabilities()
+    return blink.get_lsp_capabilities()
   end
 
+  -- Fallback when blink is not yet loaded
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -133,17 +133,5 @@ return {
   {
     "b0o/schemastore.nvim",
     ft = "json",
-  },
-
-  -- LSP signature help
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "InsertEnter",
-    opts = {
-      zindex = 20,
-      handler_opts = {
-        border = "single",
-      },
-    },
   },
 }
