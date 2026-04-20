@@ -3,7 +3,6 @@ local M = {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
-    -- { "nvim-telescope/telescope-fzf-native.nvim", lazy = true },
     { "nvim-telescope/telescope-ui-select.nvim", lazy = true },
   },
   lazy = true,
@@ -176,8 +175,9 @@ function M.config()
   telescope.load_extension("fzf")
   telescope.load_extension("ui-select")
 
-  local keymap = vim.api.nvim_set_keymap
-  keymap("n", "<leader><leader>", "<cmd> Telescope buffers<CR>", { desc = "Open list of buffers" })
+  -- TODO: This stopped working, so I defined it in whichkey.lua
+  -- local keymap = vim.api.nvim_set_keymap
+  -- keymap("n", "<leader><leader>", "<cmd>Telescope buffers<CR>", { desc = "Open list of buffers" })
 end
 
 return M

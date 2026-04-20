@@ -54,12 +54,3 @@ else
   -- spec("plugin.leetcode")
   require("plugin.lazy")
 end
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  -- Maximum width of the hover window
-  max_width = 100,
-  -- Optional: Ensure wrapping by setting wrap to true
-  wrap = true,
-  -- Optional: Additional styling for the floating window
-  border = "single", -- Can be "single", "double", "rounded", etc.
-})

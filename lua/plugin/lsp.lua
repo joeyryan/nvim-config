@@ -1,4 +1,6 @@
 -- LSP configuration and related plugins
+
+-- Server list (exported for mason.lua to use)
 local servers = {
   "kotlin_lsp",
   "phpactor",
@@ -95,20 +97,15 @@ local function config()
       opts = vim.tbl_deep_extend("force", settings, opts)
     end
 
-    -- 2026-03-07 - NEODEV NO LONGER NEEDED WHEN USING LAZYDEV.NVIM
-    -- neodev is a lua specific plugin that loads neovim documentation into the lsp
-    -- if server == "lua_ls" then
-    --   require("neodev").setup({})
-    -- end
-    --
     -- Use the new vim.lsp.config instead of nvim-lspconfig
     vim.lsp.config[server] = opts
     vim.lsp.enable(server)
   end
 end
 
--- Return an array of plugin specs instead of a single spec
-return {
+-- Return plugin specs as an array (for lazy.nvim import)
+-- Also attach servers list so mason.lua can access it
+local specs = {
   -- Core LSP plugin (only needed for Neovim < 0.11)
   {
     "neovim/nvim-lspconfig",
@@ -135,3 +132,8 @@ return {
     ft = "json",
   },
 }
+
+-- Attach servers to the specs array so mason.lua can access via require("plugin.lsp").servers
+specs.servers = servers
+
+return specs

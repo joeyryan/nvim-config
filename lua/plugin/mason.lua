@@ -17,7 +17,6 @@ function M.config()
     ui = {
       border = "rounded",
     },
-    ensure_installed = M.servers,
   })
   require("mason-lspconfig").setup({
     ensure_installed = M.servers,
