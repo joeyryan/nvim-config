@@ -14,7 +14,7 @@ function M.config()
       added = icons.git.LineAdded,
       modified = icons.git.LineModified,
       removed = icons.git.LineRemoved,
-    }, -- Changes the symbols used by the diff.
+    },
   }
 
   require("lualine").setup({
@@ -32,7 +32,7 @@ function M.config()
     sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch" },
-      lualine_c = { diff },
+      lualine_c = { diff, { "filename", path = 1 } },
       lualine_x = { "diagnostics" },
       lualine_y = { "filetype" },
       lualine_z = { "progress" },
