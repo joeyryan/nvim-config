@@ -82,69 +82,83 @@ function M.config()
         },
       }
 
-      local function green_comment()
+      local function spec(fg, style)
         return {
-          fg = colors.green,
-          style = { "italic" },
+          fg = fg,
+          style = style or {},
         }
       end
 
-      local function set(group)
-        hl[group] = green_comment()
+      local function set(group, fg, style)
+        hl[group] = spec(fg, style)
       end
 
-      -- Treesitter captures.
-      --
-      -- Rust parser/filetype: rust
-      -- Lua parser/filetype: lua
-      -- C# filetype is commonly "cs"; Treesitter parser is commonly "c_sharp".
-      -- "csharp" is included as a harmless fallback for custom setups.
+      local function set_comment(group)
+        set(group, colors.green, { "italic" })
+      end
+
+      -- Comments / documentation comments: green italic.
       for _, lang in ipairs({ "rust", "lua", "cs", "c_sharp", "csharp" }) do
-        -- set("@comment." .. lang)
-        set("@comment.documentation." .. lang)
+        set_comment("@comment.documentation." .. lang)
 
-        -- LSP semantic token comments.
-        -- set("@lsp.type.comment." .. lang)
-        set("@lsp.mod.documentation." .. lang)
-        set("@lsp.typemod.comment.documentation." .. lang)
+        set_comment("@lsp.mod.documentation." .. lang)
+        set_comment("@lsp.typemod.comment.documentation." .. lang)
       end
 
-      -- Rust Vim syntax fallback groups.
-      -- These matter when regex syntax still contributes, or when Treesitter/LSP
-      -- does not cover a particular comment region.
+      -- Rust Vim syntax fallback groups for comments.
       for _, group in ipairs({
-        -- "rustCommentLine",
-        -- "rustCommentBlock",
         "rustCommentLineDoc",
         "rustCommentLineDocLeader",
         "rustCommentBlockDoc",
         "rustCommentBlockDocStar",
         "rustCommentDocCodeFence",
       }) do
-        set(group)
+        set_comment(group)
       end
 
-      -- C# Vim syntax fallback groups.
+      -- C# Vim syntax fallback groups for comments.
       for _, group in ipairs({
-        "csLineComment",
-        "csBlockComment",
-        "csComment",
+        -- "csLineComment",
+        -- "csBlockComment",
+        -- "csComment",
         "csSummary",
         "csXmlComment",
         "csXmlCommentLeader",
         "csXmlCommentTag",
         "csXmlCommentString",
       }) do
-        set(group)
+        set_comment(group)
       end
 
-      -- Lua Vim syntax fallback groups.
+      ---------------------------------------------------------------------------
+      -- Rust custom colors
+      ---------------------------------------------------------------------------
+
+      -- Rust macros
       for _, group in ipairs({
-        "luaComment",
-        "luaCommentDelimiter",
+        "rustMacro",
+        "@lsp.type.macro.rust",
+        "@lsp.typemod.macro.defaultLibrary.rust",
+        "@lsp.typemod.macro.library.rust",
       }) do
-        set(group)
+        set(group, colors.sapphire)
       end
+
+      -- Sigils include &, *, and other symbols
+      set("rustSigil", colors.sapphire)
+
+      -- rustStorage includes "mut" keyword
+      set("rustStorage", colors.mauve)
+
+      set("@lsp.type.selfTypeKeyword.rust", colors.mauve)
+      set("@lsp.type.selfKeyword.rust", colors.red)
+      set("@lsp.type.builtinType.rust", colors.mauve)
+      set("@lsp.type.struct.rust", colors.yellow)
+      set("@lsp.type.namespace.rust", colors.peach)
+      set("rustModPathSep", colors.sapphire)
+      set("@lsp.type.formatSpecifier.rust", colors.pink)
+      set("@lsp.type.escapeSequence.rust", colors.pink)
+      set("@lsp.typemod.function.defaultLibrary.rust", colors.blue)
 
       return hl
     end,
