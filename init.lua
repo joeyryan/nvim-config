@@ -41,6 +41,7 @@ else
   spec("plugin.breadcrumbs")
   spec("plugin.fidget")
   spec("plugin.trouble")
+  spec("plugin.dap")
 
   -- Formatting
   spec("plugin.conform")

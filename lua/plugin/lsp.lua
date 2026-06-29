@@ -34,6 +34,14 @@ local function on_attach(client, bufnr)
   -- Modified gi and gr to use Trouble, which is a nicer list view than quickfix
   keymap(bufnr, "n", "gi", "<cmd>lua require('trouble').toggle('lsp_implementations')<cr>", opts)
   keymap(bufnr, "n", "gr", "<cmd>lua require('trouble').toggle('lsp_references')<cr>", opts)
+
+  if client.name == "rust_analyzer" and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
+
+  if client.server_capabilities.codeLensProvider then
+    vim.lsp.codelens.refresh({ bufnr = bufnr })
+  end
 end
 
 local function common_capabilities()

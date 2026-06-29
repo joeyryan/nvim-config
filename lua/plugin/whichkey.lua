@@ -80,6 +80,13 @@ function M.config()
     { "<leader>h", "<cmd>nohlsearch<CR>", desc = "No Highlight", nowait = true, remap = false },
     { "<leader>l", group = "LSP", nowait = true, remap = false },
     { "<leader>ld", "<cmd>Telescope lsp_definitions<cr>", desc = "Definitions", nowait = true, remap = false },
+    {
+      "<leader>lh",
+      "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })<cr>",
+      desc = "Toggle Inlay Hints",
+      nowait = true,
+      remap = false,
+    },
     { "<leader>li", "<cmd>Telescope lsp_implementations<cr>", desc = "Implementations", nowait = true, remap = false },
     { "<leader>lr", "<cmd>Telescope lsp_references<cr>", desc = "References", nowait = true, remap = false },
     { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols", nowait = true, remap = false },

@@ -17,6 +17,7 @@ local M = {
       markdown = { "prettier" },
       graphql = { "prettier" },
       lua = { "stylua" },
+      rust = { "rustfmt", lsp_format = "fallback" },
       sh = { "shfmt" },
       python = { "black" },
     },

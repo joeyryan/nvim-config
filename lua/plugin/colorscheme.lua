@@ -74,6 +74,27 @@ function M.config()
         NvimTreeIndentMarker = {
           fg = colors.surface0,
         },
+        AerialGuide = {
+          fg = colors.surface0,
+        },
+        AerialImplIcon = {
+          fg = colors.yellow,
+        },
+        AerialMacroIcon = {
+          fg = colors.sapphire,
+        },
+        AerialStaticIcon = {
+          fg = colors.peach,
+        },
+        AerialTraitIcon = {
+          fg = colors.mauve,
+        },
+        AerialTypeAliasIcon = {
+          fg = colors.yellow,
+        },
+        AerialUnionIcon = {
+          fg = colors.yellow,
+        },
         TroubleIndentFoldOpen = {
           fg = colors.surface2,
         },

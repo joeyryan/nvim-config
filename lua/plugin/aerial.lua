@@ -1,4 +1,10 @@
 -- Aerial is a symbol outline navigation tool
+local icons = require("core.icons")
+
+local aerial_icons = vim.tbl_extend("force", icons.kind, {
+  Collapsed = icons.ui.ChevronRight .. " ",
+})
+
 local M = {
   "stevearc/aerial.nvim",
   dependencies = {
@@ -66,7 +72,7 @@ local M = {
     highlight_on_hover = true,
     highlight_on_jump = 300,
     autojump = false,
-    icons = {},
+    icons = aerial_icons,
     ignore = {
       unlisted_buffers = false,
       diff_windows = true,
