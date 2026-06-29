@@ -20,7 +20,7 @@ local servers = {
   "terraformls",
   "rust_analyzer",
   "asm_lsp",
-  "cmake",
+  -- "cmake", -- currently broken because it requires python3 version 3.13 or lower, and i have version 3.14.6
 }
 
 local function on_attach(client, bufnr)
