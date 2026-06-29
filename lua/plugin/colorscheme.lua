@@ -74,6 +74,26 @@ function M.config()
         NvimTreeIndentMarker = {
           fg = colors.surface0,
         },
+        NvimTreeWinSeparator = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        NvimTreeStatusLine = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        NvimTreeStatusLineNC = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        NvimTreeStatuslineNC = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        NvimTreeStatuslineNc = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
         WinSeparator = {
           fg = colors.mantle,
           bg = colors.mantle,
@@ -121,6 +141,33 @@ function M.config()
         },
         AerialUnionIcon = {
           fg = colors.yellow,
+        },
+        TroubleNormal = {
+          fg = colors.text,
+          bg = colors.mantle,
+        },
+        TroubleNormalNC = {
+          fg = colors.text,
+          bg = colors.mantle,
+        },
+        TroubleEndOfBuffer = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        TroubleSignColumn = {
+          bg = colors.mantle,
+        },
+        TroubleStatusLine = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        TroubleStatusLineNC = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        TroubleWinSeparator = {
+          fg = colors.mantle,
+          bg = colors.mantle,
         },
         TroubleIndentFoldOpen = {
           fg = colors.surface2,
