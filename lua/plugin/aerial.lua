@@ -21,7 +21,16 @@ local M = {
       max_width = { 30, 0.2 },
       width = nil,
       min_width = 16,
-      win_opts = {},
+      win_opts = {
+        winhighlight = table.concat({
+          "Normal:AerialNormal",
+          "NormalNC:AerialNormalNC",
+          "SignColumn:AerialSignColumn",
+          "EndOfBuffer:AerialEndOfBuffer",
+          "WinSeparator:AerialWinSeparator",
+          "VertSplit:AerialWinSeparator",
+        }, ","),
+      },
       default_direction = "prefer_right",
       placement = "window",
       resize_to_content = true,

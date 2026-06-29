@@ -74,6 +74,33 @@ function M.config()
         NvimTreeIndentMarker = {
           fg = colors.surface0,
         },
+        WinSeparator = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        VertSplit = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        AerialNormal = {
+          fg = colors.text,
+          bg = colors.mantle,
+        },
+        AerialNormalNC = {
+          fg = colors.text,
+          bg = colors.mantle,
+        },
+        AerialSignColumn = {
+          bg = colors.mantle,
+        },
+        AerialEndOfBuffer = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
+        AerialWinSeparator = {
+          fg = colors.mantle,
+          bg = colors.mantle,
+        },
         AerialGuide = {
           fg = colors.surface0,
         },
